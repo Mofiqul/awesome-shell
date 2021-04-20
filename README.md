@@ -13,4 +13,9 @@ Took Inspiration from [The glorious dotfiles](https://github.com/manilarome/the-
 ![Screen shot](./screen-shots/glassy.png)
 
 ## Dusky theme
-![Screen shot](./screen-shots/dusky.png)
+![Screen shot](./screen-shots/dusky/dusky.png)
+![Screen shot](./screen-shots/dusky/noti-center.png)
+![Screen shot](./screen-shots/dusky/noti.png)
+![Screen shot](./screen-shots/dusky/cal.png)
+![Screen shot](./screen-shots/dusky/exit.png)
+![Screen shot](./screen-shots/dusky/lock.png)
