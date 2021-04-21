@@ -3,17 +3,11 @@ local beautiful = require("beautiful")
 local filesystem = require("gears").filesystem
 local naughty = require("naughty")
 local create_button = require("widgets.buttons.create-button")
-
-function sleep(n)
-  local t = os.clock()
-  while os.clock() - t <= n do
-    -- nothing
-  end
-end
+local helpers = require("libs.helpers")
 
 local take_screen_shot = function ()
 	awesome.emit_signal("control-center::hide")
-	sleep(.2)
+	helpers.sleep(.2)
 
 	local screen_shot_dir = "~/Pictures/Screenshots/"
 	
@@ -54,7 +48,7 @@ local take_screen_shot = function ()
 
 	naughty.notification({
 		app_name = 'Screenshot Tool',
-		icon = beautiful.icon_noti_screenhost,
+		icon = beautiful.icon_screenhost_taken,
 		timeout = 10,
 		title = '<b>Screenshot taken</b>',
 		message = 'Screenshot saved to ' .. screen_shot_dir .. file_name,

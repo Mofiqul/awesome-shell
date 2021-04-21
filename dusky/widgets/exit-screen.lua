@@ -5,6 +5,7 @@ local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local default_apps = require('configurations.default-apps')
 local clickable_container = require('widgets.clickable-container')
+local helpers = require("libs.helpers")
 local widget_icon_dir = beautiful.theme_path .. 'icons/system/'
 local config_dir = gears.filesystem.get_configuration_dir()
 local profile_name = wibox.widget {
@@ -151,6 +152,7 @@ end
 
 local lock_command = function()
 	awesome.emit_signal('module::exit_screen:hide')
+	helpers.sleep(.2)
 	awful.spawn.with_shell(default_apps.lock_screen)
 end
 
