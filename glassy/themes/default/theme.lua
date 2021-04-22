@@ -3,7 +3,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local gears = require("gears")
 local gfs = require("gears.filesystem")
-local themes_path = gfs.get_configuration_dir () .. "themes/opaque/"
+local themes_path = gfs.get_configuration_dir () .. "themes/default/"
 local theme = {}
 theme.font = "Ubuntu 10"
 theme.font_bold = "Ubuntu 10"
@@ -12,10 +12,10 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
-theme.bg_normal     = "#1e1e1e"
-theme.bg_focus      = "#0A7ACA"
+theme.bg_normal     = "#1e1e1eAA"
+theme.bg_focus      = "#0A7ACAAA"
 theme.bg_urgent     = "#F44747"
-theme.bg_minimize   = "#3c3c3c"
+theme.bg_minimize   = "#444444AA"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#ffffff"
@@ -24,8 +24,8 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 -- button colors
-theme.bg_button = "#303030"
-theme.border_button = "#303030"
+theme.bg_button = "#ffffff11"
+theme.border_button = "#ffffff22"
 theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#608b4e"
 
@@ -33,8 +33,8 @@ theme.useless_gap   = dpi(1)
 theme.gap_single_client = false
 theme.maximized_hide_border = true
 theme.border_width  = dpi(1)
-theme.border_normal = "#303030"
-theme.border_focus  = "#0A7ACA"
+theme.border_normal = "#303030AA"
+theme.border_focus  = "#0A7ACAAA"
 theme.border_marked = "#F44747"
 
 -- widget bg colors
@@ -51,18 +51,18 @@ theme.widget_margin = dpi(6)
 theme.is_enable_titlebar = false
 -- shapes
 theme.btn_xs_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 4)
 end
 
 theme.btn_lg_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 6)
 end
 
 theme.widget_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 6)
 end
 theme.panel_button_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 6)
 end
 
 -- Icons
@@ -129,15 +129,17 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
-theme.taglist_bg_focus = theme.bg_focus
+theme.taglist_bg_focus = theme.border_button
 theme.taglist_spacing     = 2
 
 
 -- Tasklist
-theme.tasklist_shape  = theme.panel_button_shape
-theme.tasklist_shape_border_width = theme.btn_border_width
+theme.tasklist_shape  = function (cr, height, width)
+    gears.shape.rounded_rect(cr, height, width, 6)
+end
+theme.tasklist_shape_border_width = dpi(1)
 theme.tasklist_shape_border_color = theme.border_button
-theme.tasklist_bg_focus = theme.bg_focus
+theme.tasklist_bg_focus = theme.bg_normal
 theme.tasklist_bg_normal = theme.bg_button
 
 
@@ -182,8 +184,8 @@ theme.wibar_position = "bottom"
 theme.titlebar_close_button_normal = themes_path .. "/titlebar/window-close-normal.svg"
 theme.titlebar_close_button_focus  = themes_path .. "/titlebar/window-close.svg"
 
-theme.titlebar_minimize_button_normal = themes_path .. "/titlebar/window-restore.svg"
-theme.titlebar_minimize_button_focus  = themes_path .. "/titlebar/gwindow-restore.svg"
+theme.titlebar_minimize_button_normal = themes_path .. "/titlebar/go-down.svg"
+theme.titlebar_minimize_button_focus  = themes_path .. "/titlebar/go-down.svg"
 
 
 theme.titlebar_sticky_button_normal_inactive = themes_path.."/titlebar/window-pin.svg"
@@ -191,10 +193,6 @@ theme.titlebar_sticky_button_focus_inactive  = themes_path.."/titlebar/window-pi
 theme.titlebar_sticky_button_normal_active = themes_path.."/titlebar/window-pin.svg"
 theme.titlebar_sticky_button_focus_active  = themes_path.."/titlebar/window-pin.svg"
 
---theme.titlebar_floating_button_normal_inactive = themes_path.."/titlebar/floating.svg"
---theme.titlebar_floating_button_focus_inactive  = themes_path.."/titlebar/floating.svg"
---theme.titlebar_floating_button_normal_active = themes_path.."/titlebar/floating.svg"
---theme.titlebar_floating_button_focus_active  = themes_path.."/titlebar/floating.svg"
 
 theme.titlebar_maximized_button_normal_inactive = themes_path.."/titlebar/go-up.svg"
 theme.titlebar_maximized_button_focus_inactive  = themes_path.."/titlebar/go-up.svg"

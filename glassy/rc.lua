@@ -38,7 +38,7 @@ do
     end)
 end
 
-beautiful.init( gears.filesystem.get_configuration_dir() .. "/themes/opaque/theme.lua")
+beautiful.init( gears.filesystem.get_configuration_dir() .. "/themes/default/theme.lua")
 
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"

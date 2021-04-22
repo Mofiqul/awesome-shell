@@ -54,10 +54,9 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            --awful.titlebar.widget.floatingbutton (c),
 			{
 				{
-					awful.titlebar.widget.stickybutton(c),
+					awful.titlebar.widget.minimizebutton(c),
 					forced_height = dpi(16),
 					forced_width = dpi(16),
 					widget = wibox.container.place

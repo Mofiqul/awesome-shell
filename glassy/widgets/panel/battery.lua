@@ -15,7 +15,7 @@ local function worker(user_args)
     local args = user_args or {}
 
     local font = beautiful.font
-    local path_to_icons = gfs.get_configuration_dir() .. "themes/codedark/icons/battery/"
+    local path_to_icons = gfs.get_configuration_dir() .. "themes/default/icons/battery/"
 
     local timeout = args.timeout or 10
 
