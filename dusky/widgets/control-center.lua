@@ -56,7 +56,7 @@ local button_row_1= wibox.widget{
 	require("widgets.buttons.dnd"),
 	require("widgets.buttons.redshift"),
 	require("widgets.buttons.airplane"),
-	require("widgets.buttons.lock"),
+	require("widgets.buttons.theme-switcher"),
 	spacing = beautiful.widget_margin * 1.5,
 	layout = wibox.layout.fixed.horizontal
 }
