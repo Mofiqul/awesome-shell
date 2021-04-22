@@ -19,3 +19,6 @@ Took Inspiration from [The glorious dotfiles](https://github.com/manilarome/the-
 ![Screen shot](./screen-shots/dusky/cal.png)
 ![Screen shot](./screen-shots/dusky/exit.png)
 ![Screen shot](./screen-shots/dusky/lock.png)
+
+## Dusky light
+![Screen shot](./screen-shots/dusky-light/shot.png)
