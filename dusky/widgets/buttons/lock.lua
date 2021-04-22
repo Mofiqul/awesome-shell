@@ -10,6 +10,6 @@ local onclick_action = function ()
 	awful.spawn.with_shell(default_apps.lock_screen)
 end
 
-local lock_screen_button = create_button.circle_big(beautiful.icon_lock, nil, onclick_action)
+local lock_screen_button = create_button.circle_big(beautiful.icon_dark_mode, nil, onclick_action)
 
 return lock_screen_button

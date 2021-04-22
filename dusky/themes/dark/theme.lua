@@ -110,6 +110,7 @@ theme.face_image = themes_path .. "icons/system/default.png"
 
 theme.icon_bell = themes_path .. "icons/notifications.svg"
 theme.icon_lock = themes_path .. "icons/lock.svg"
+theme.icon_dark_mode = themes_path .. "icons/contrast.svg"
 theme.icon_redshift = themes_path .. "icons/redshift-status-on.svg"
 
 theme.icon_floating = themes_path .. "layouts/floating.svg"
