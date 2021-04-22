@@ -1,13 +1,11 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
-local default_apps = require("configurations.default-apps")
-local helpers = require("libs.helpers")
 
 local onclick_action = function ()
-	awesome.emit_signal("control-center::hide")
-	helpers.sleep(.2)
-	awful.spawn.with_shell(default_apps.lock_screen)
+	awful.spawn.with_shell("rm -rf $HOME/.config/awesome ; ln -s $HOME/Projects/awesome-config/dusky $HOME/.config/awesome")
+	awesome.restart()
+
 end
 
 local lock_screen_button = create_button.circle_big(beautiful.icon_dark_mode, nil, onclick_action)
