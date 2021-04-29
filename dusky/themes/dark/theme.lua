@@ -30,7 +30,7 @@ theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#608b4e"
 theme.bg_inner_widget = "#2d2d2d"
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(1)
 theme.gap_single_client = false
 theme.maximized_hide_border = true
 theme.border_width  = dpi(1)
