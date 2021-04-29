@@ -119,7 +119,7 @@ screen.connect_signal("arrange", function (s)
         --end
     --end
     for _, c in pairs(s.clients) do
-		if is_single_client or c.maximized then
+		if (is_single_client and not c.floating)  or c.maximized then
             c.border_width = 0
     		awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
         elseif layout == 'floating' then
@@ -145,6 +145,9 @@ local function setTitlebar(client, s)
     end
 end
 
+client.connect_signal("unfocus", function (c)
+	c.border_color = beautiful.border_color_normal	
+end)
 
 --Toggle titlebar on floating status change
 --client.connect_signal("property::floating", function(c)

@@ -10,10 +10,10 @@ configuration {
 }
 
 * {
-    background:                     #dfdfdfee;
+    background:                     #dfdfdfdd;
     background-alt:                 #00000000;
     background-bar:                 #ffffffee;
-	border:                         #ffffff;
+	border:                         #ffffffaa;
     foreground:                     #444444;
     accent:			            	#0A7ACA;
 }

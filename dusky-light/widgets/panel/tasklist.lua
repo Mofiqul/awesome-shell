@@ -62,7 +62,7 @@ local tasklist = function (s)
 				shape = beautiful.panel_button_shape,
 				border_width = beautiful.btn_border_width,
 				id = "background_role",
-				border_color = beautiful.border_button,
+				border_color = beautiful.border_normal,
 				widget = wibox.container.background
 			},
 			margins  = dpi(2),

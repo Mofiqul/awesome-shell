@@ -12,7 +12,7 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
-theme.bg_normal     = "#dfdfdfee"
+theme.bg_normal     = "#dfdfdfdd"
 theme.bg_focus      = "#0A7ACA"
 theme.bg_urgent     = "#F44747"
 theme.bg_minimize   = "#37373c"
@@ -21,26 +21,27 @@ theme.bg_systray    = theme.bg_normal
 theme.fg_normal     = "#444444"
 theme.fg_focus      = "#444444"
 theme.fg_urgent     = "#444444"
-theme.fg_minimize   = "#444444"
+theme.fg_minimize   = "#ffffff"
 theme.fg_focus_alt = "#ffffff"
 
 -- button colors
-theme.bg_button = "#ffffff"
-theme.border_button = "#e1e1e1"
+theme.bg_button = "#ffffffdd"
+theme.border_button = "#e1e1e1dd"
 theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#608b4e"
-theme.bg_inner_widget = "#eeeeee"
+theme.bg_inner_widget = "#efefefdd"
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = dpi(1)
 theme.gap_single_client = false
 theme.maximized_hide_border = true
-theme.border_width  = dpi(1)
-theme.border_normal = "#ffffff"
-theme.border_focus  = "#0A7ACA"
-theme.border_marked = "#F44747"
+theme.border_width  = dpi(2)
+theme.border_normal = "#ffffffdd"
+theme.border_focus  = "#0A7ACAdd"
+theme.border_color_normal = "#dfdfdf"
+theme.border_marked = "#F44747dd"
 
 -- widget bg colors
-theme.bg_widget = "#1e1e1e99"
+theme.bg_widget = "#ffffff99"
 
 -- Margins and paddings and border width
 theme.notification_margin = dpi(6)
@@ -69,7 +70,7 @@ end
 
 -- Icons
 theme.icon_times = themes_path .. "icons/remove.svg"
--- awesome icon 
+-- awesome icon
 theme.awesome_menu_icon = themes_path .. "icons/awesome.svg"
 --- Update toggle icons
 theme.icon_update_none = themes_path .. "icons/update-none.svg"
@@ -139,20 +140,16 @@ theme.taglist_spacing     = 2
 
 -- Tasklist
 theme.tasklist_shape  = theme.panel_button_shape
-theme.tasklist_shape_border_width = theme.btn_border_width
+theme.tasklist_shape_border_width = 0
 theme.tasklist_shape_border_color = theme.border_button
 theme.tasklist_bg_focus = theme.bg_focus
 theme.tasklist_fg_focus = theme.fg_focus_alt
 theme.tasklist_bg_normal = theme.bg_button
 
-
-
 -- Snap area
-theme.snap_bg = theme.bg_button
-theme.snap_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 8)
-end
-theme.snap_border_width = dpi(3)
+theme.snap_bg = theme.bg_normal
+theme.snap_shape = theme.widget_shape
+theme.snap_border_width = dpi(2)
 theme.snapper_gap = dpi(3)
 
 
