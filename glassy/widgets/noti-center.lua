@@ -294,9 +294,8 @@ local create_notifbox =  function (n)
 			margins = beautiful.notification_margin,
 			widget = wibox.container.margin
 		},
-		bg = beautiful.bg_normal,
-		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_normal,
+		bg = beautiful.bg_inner_widget,
+		border_width = dpi(0),
 		shape = beautiful.notification_shape,
 		widget = wibox.container.background
 	}
@@ -399,7 +398,6 @@ local notif_center = wibox.widget {
 	border_color = beautiful.border_button,
 	shape = beautiful.widget_shape,
 	widget = wibox.container.background,
-	
 }
 
 

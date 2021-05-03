@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Change awesome theme
 rm -rf $HOME/.config/awesome ; ln -s $HOME/Projects/awesome-config/dusky $HOME/.config/awesome
 
@@ -12,10 +12,10 @@ Gtk/CursorThemeName "Adwaita"
 Net/IconThemeName "Qogir-dark"
 ' > ~/.xsettingsd
 
-# Set Kitty thmeme
-kitty @ set-colors -a -c "$HOME/.config/kitty/themes/codeDark.conf"
+# Reload gtk theme
+killall -HUP xsettingsd
 
 # Set vim colorcheme
 echo "vim.cmd[[colorscheme codedark]]" > "$HOME/.config/nvim/lua/set-colorscheme.lua"
-# Reload gtk theme
-killall -HUP xsettingsd
+# Set Kitty thmeme
+kitty @ set-colors -a -c $HOME/.config/kitty/themes/codeDark.conf

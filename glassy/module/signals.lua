@@ -119,11 +119,12 @@ screen.connect_signal("arrange", function (s)
         --end
     --end
     for _, c in pairs(s.clients) do
-		if is_single_client or c.maximized then
+		if (is_single_client and not c.floating) or c.maximized then
             c.border_width = 0
     		awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
         elseif layout == 'floating' then
             c.border_width = 0
+			c.placement = awful.placement.centered
    			awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 1")
         else
     		awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")

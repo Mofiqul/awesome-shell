@@ -40,7 +40,7 @@ end
 
 beautiful.init( gears.filesystem.get_configuration_dir() .. "/themes/dark/theme.lua")
 
-terminal = "kitty"
+terminal = "kitty --single-instance"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 

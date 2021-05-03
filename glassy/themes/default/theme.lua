@@ -12,12 +12,12 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
-theme.bg_normal     = "#1e1e1eAA"
-theme.bg_focus      = "#0A7ACAAA"
+theme.bg_normal     = "#111111BB"
+theme.bg_focus      = "#0A7ACABB"
 theme.bg_urgent     = "#F44747"
-theme.bg_minimize   = "#444444AA"
+theme.bg_minimize   = "#262626BB"
 theme.bg_systray    = theme.bg_normal
-
+theme.bg_transparent = "#00000000"
 theme.fg_normal     = "#ffffff"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
@@ -32,13 +32,15 @@ theme.button_active_alt = "#608b4e"
 theme.useless_gap   = dpi(1)
 theme.gap_single_client = false
 theme.maximized_hide_border = true
-theme.border_width  = dpi(1)
-theme.border_normal = "#303030AA"
-theme.border_focus  = "#0A7ACAAA"
+theme.border_width  = dpi(2)
+theme.border_normal = "#303030BB"
+theme.border_focus  = "#0A7ACABB"
 theme.border_marked = "#F44747"
 
 -- widget bg colors
-theme.bg_widget = "#1e1e1e99"
+theme.bg_widget = "#11111199"
+theme.bg_inner_widget = "#00000088"
+
 
 -- Margins and paddings and border width
 theme.notification_margin = dpi(6)
@@ -62,7 +64,7 @@ theme.widget_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 6)
 end
 theme.panel_button_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 6)
+    gears.shape.rounded_rect(cr, height, width, 4)
 end
 
 -- Icons
@@ -130,26 +132,26 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
 theme.taglist_bg_focus = theme.border_button
-theme.taglist_spacing     = 2
+theme.taglist_spacing = 2
 
 
 -- Tasklist
-theme.tasklist_shape  = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 6)
-end
+theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = dpi(1)
 theme.tasklist_shape_border_color = theme.border_button
-theme.tasklist_bg_focus = theme.bg_normal
-theme.tasklist_bg_normal = theme.bg_button
+theme.tasklist_bg_focus = theme.bg_button
+theme.tasklist_bg_normal = theme.bg_transparent
+
 
 
 -- Snap area
-theme.snap_bg = theme.bg_button
+theme.snap_bg = theme.bg_transparent
 theme.snap_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 8)
+    gears.shape.rounded_rect(cr, height, width, 0)
 end
-theme.snap_border_width = dpi(3)
-theme.snapper_gap = dpi(3)
+theme.snap_border_width = dpi(1)
+theme.snap_border_color = theme.border_button
+theme.snapper_gap = dpi(1)
 
 
 -- Notification
@@ -176,7 +178,7 @@ theme.menu_height = dpi(24)
 theme.menu_width  = dpi(200)
 
 -- Wibar
-theme.wibar_height = dpi(26)
+theme.wibar_height = dpi(27)
 theme.wibar_position = "bottom"
 
 -- Titlebar

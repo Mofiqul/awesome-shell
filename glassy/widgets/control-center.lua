@@ -99,7 +99,7 @@ local control_buttons = wibox.widget{
 		bottom = dpi(15),
 		widget = wibox.container.margin
 	},
-	bg = beautiful.bg_normal,
+	bg = beautiful.bg_inner_widget,
 	shape = beautiful.widget_shape,
 	widget = wibox.container.background
 }
@@ -207,15 +207,11 @@ local battery_widget = function ()
 	}
 
 	local battery_icon = wibox.widget{
-		{
-			image = beautiful.battery_icon,
-			resize = true,
-			forced_width = dpi(18),
-			forced_height = dpi(18),
-			widget = wibox.widget.imagebox
-		},
-		top = dpi(2),
-		widget = wibox.container.margin
+		image = beautiful.battery_icon,
+		resize = true,
+		forced_width = dpi(18),
+		forced_height = dpi(18),
+		widget = wibox.widget.imagebox
 	}
 
 	local battery_state = wibox.widget {
@@ -236,7 +232,7 @@ local battery_widget = function ()
 			},
 			widget = wibox.container.place
 		},
-		margins = beautiful.widget_margin,
+		margins = beautiful.widget_margin - dpi(4),
 		widget = wibox.container.margin
 	}
 	awful.widget.watch(
@@ -260,7 +256,7 @@ end
 
 local battery_widget_wrapped = wibox.widget{
 	widget = wibox.container.background,
-	bg = beautiful.bg_normal,
+	bg = beautiful.bg_inner_widget,
 	shape = beautiful.widget_shape,
 	battery_widget()
 
@@ -277,7 +273,7 @@ local horizontal_separator = wibox.widget {
 
 local slider_contols = wibox.widget{
 	widget = wibox.container.background,
-	bg = beautiful.bg_normal,
+	bg = beautiful.bg_inner_widget,
 	shape = beautiful.widget_shape,
 	{
 		layout = wibox.layout.fixed.vertical,

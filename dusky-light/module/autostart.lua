@@ -6,16 +6,9 @@ local config_dir = filesystem.get_configuration_dir()
 local startup_apps = {
 	"picom -b --experimental-backends --config " .. config_dir .. "configurations/picom.conf",
 	"redshift -t 5700:3400 -l 26.1445:91.7362",
-	-- USB auto mount
 	"udiskie",
-	-- Polkit agent
---	"/usr/lib/xfce-polkit/xfce-polkit",
-	-- Keyring
---	"eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)",
-	-- display brightness
-	"xbacklight -set 40",
-	--"xsetroot -cursor_name left_ptr"
-	"$HOME/.local/bin/xinput-tab"
+	"$HOME/.local/bin/xinput-tab",
+	"xsettingsd"
 }
 
 

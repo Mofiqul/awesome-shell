@@ -10,10 +10,7 @@ local layoutbox = function (s)
 		{
 			{
 				awful.widget.layoutbox(s),
-				top = dpi(2),
-				bottom = dpi(2),
-				left = dpi(2),
-				right = dpi(2),
+				margins = dpi(3),
 				widget = wibox.container.margin
 			},
 			shape = beautiful.panel_button_shape,
