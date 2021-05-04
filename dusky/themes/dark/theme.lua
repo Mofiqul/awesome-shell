@@ -52,18 +52,18 @@ theme.widget_margin = dpi(6)
 theme.is_enable_titlebar = false
 -- shapes
 theme.btn_xs_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 4)
 end
 
 theme.btn_lg_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 6)
 end
 
 theme.widget_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 6)
 end
 theme.panel_button_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
+    gears.shape.rounded_rect(cr, height, width, 4)
 end
 
 -- Icons

@@ -24,7 +24,7 @@ window {
     text-color:                     @foreground;
 	border:							1px;
 	border-color:					@border;
-    border-radius:                  0px;
+    border-radius:                  6px;
 	width:							35%;
     location:                       northwest;
     x-offset:                       5px;
@@ -56,7 +56,7 @@ inputbar {
     text-color:                     @foreground;
     expand:                         false;
 	border:							1px;
-    border-radius:                  0px;
+    border-radius:                  4px;
 	border-color:					@accent;
     margin:                         0% 0% 0% 0%;
     padding:                        0.50%;
@@ -106,6 +106,6 @@ element selected {
     background-color:               @background-bar;
     text-color:                     @foreground;
 	border:							1px;
-    border-radius:                  0px;
+    border-radius:                  4px;
     border-color:                  	@accent;
 }

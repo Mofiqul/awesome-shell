@@ -131,7 +131,7 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
-theme.taglist_bg_focus = theme.border_button
+theme.taglist_bg_focus = theme.bg_inner_widget
 theme.taglist_spacing = 2
 
 
@@ -139,7 +139,7 @@ theme.taglist_spacing = 2
 theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = dpi(1)
 theme.tasklist_shape_border_color = theme.border_button
-theme.tasklist_bg_focus = theme.bg_button
+theme.tasklist_bg_focus = theme.bg_inner_widget
 theme.tasklist_bg_normal = theme.bg_transparent
 
 

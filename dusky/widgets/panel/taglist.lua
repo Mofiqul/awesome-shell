@@ -51,8 +51,8 @@ local taglist = function (s)
 
 			{
 				tags,
-				left = dpi(0),
-				right = dpi(0),
+				left = dpi(4),
+				right = dpi(4),
 				top = dpi(0),
 				bottom = dpi(0),
 				widget = wibox.container.margin
