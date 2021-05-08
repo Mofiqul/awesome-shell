@@ -3,6 +3,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local client = client
 
 local tasklist = function (s)
 
@@ -34,7 +35,8 @@ local tasklist = function (s)
 		filter   = awful.widget.tasklist.filter.currenttags,
 		buttons  = tasklist_buttons,
 		layout   = {
-			layout  = wibox.layout.fixed.horizontal
+			layout  = wibox.layout.fixed.horizontal,
+			spacing = dpi(4)
 		},
 		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
 		-- not a widget instance.
@@ -42,31 +44,48 @@ local tasklist = function (s)
 			{
 				{
 					{
+						widget = wibox.container.background,
+						id = "background_role",
+						forced_height = dpi(2)
+					},
+					{
 						{
 							awful.widget.clienticon,
+							left = dpi(4),
+							widget = wibox.container.margin
+						},
+						{
 							{
 								id     = 'text_role',
-								widget = wibox.widget.textbox,
+								widget = wibox.widget.textbox
 							},
-							spacing = dpi(2),
-							layout = wibox.layout.fixed.horizontal
+							right = dpi(4),
+							widget = wibox.container.margin
 						},
-						widget = wibox.layout.align.vertical,
+						spacing = dpi(4),
+						layout = wibox.layout.fixed.horizontal
 					},
-					left = dpi(6),
-					right = dpi(6),
-					top = dpi(2),
-					bottom = dpi(2),
-					widget = wibox.container.margin
+					widget = wibox.layout.align.vertical,
 				},
-				shape = beautiful.panel_button_shape,
-				border_width = beautiful.btn_border_width,
-				id = "background_role",
-				border_color = beautiful.border_button,
-				widget = wibox.container.background
+				widget = wibox.container.background,
+				id = "background"
 			},
-			margins  = dpi(2),
-			widget = wibox.container.margin
+			widget = wibox.container.margin,
+			top = dpi(2),
+			bottom = dpi(2),
+			create_callback = function (self, c, index, objects)
+				self:get_children_by_id('background')[1].bg = beautiful.bg_tasklist_active
+			end,
+			update_callback = function (self, c, index, objects)
+				local widget_background = self:get_children_by_id("background")[1]
+				if c.active then
+					widget_background.bg = beautiful.bg_tasklist_active
+				elseif c.minimized then
+					widget_background.bg = beautiful.bg_minimize
+				else
+					widget_background.bg = beautiful.bg_tasklist_inactive
+				end
+			end
 		},
 	}
 
