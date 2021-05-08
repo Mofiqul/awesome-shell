@@ -27,7 +27,7 @@ styles.focus = {
 
 styles.header = {
 	fg_color = beautiful.fg_normal,
-	bg_color = beautiful.bg_button,
+	bg_color = beautiful.bg_inner_widget,
     markup = function(t) return '<b>' .. string.upper(t) .. '</b>' end,
 	shape = beautiful.widget_shape
 }

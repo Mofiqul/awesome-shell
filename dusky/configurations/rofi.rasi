@@ -1,5 +1,5 @@
 configuration {
-	font:							"Ubuntu Nerd font 9";
+	font:							"Ubuntu Nerd font 12";
     show-icons:                     true;
     display-drun: 					"";
     drun-display-format:            "{name}";
@@ -10,12 +10,12 @@ configuration {
 }
 
 * {
-    background:                     #262626ee;
+    background:                     #252526;
     background-alt:                 #00000000;
-    background-bar:                 #5a5a5a5a;
+    background-bar:                 #303030;
 	border:                         #3d3d3d;
     foreground:                     #ffffff;
-    accent:			            	#0A7ACA;
+    accent:			            	#51514f;
 }
 
 window {
@@ -28,7 +28,7 @@ window {
 	width:							35%;
     location:                       northwest;
     x-offset:                       5px;
-    y-offset:                       341px;
+    y-offset:                       337px;
 }
 
 prompt {
@@ -36,7 +36,6 @@ prompt {
 	padding: 						0.30% 0.5% 0% 0%;
 	background-color: 				@background-alt;
 	text-color: 					@foreground;
-	font:							"Ubuntu Nerd Font 10";
 }
 
 entry {
@@ -45,7 +44,7 @@ entry {
     placeholder-color:              @foreground;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search Applications";
+    placeholder:                    "Type to search";
     padding:                        0.30% 0% 0% 0.25%;
     blink:                          true;
 }
@@ -100,6 +99,7 @@ element-text {
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         0.5% 0.5% -0.5% 0.5%;
+	font:                           "Ubuntu 9";
 }
 
 element selected {

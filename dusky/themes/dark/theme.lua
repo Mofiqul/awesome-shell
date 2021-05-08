@@ -12,10 +12,10 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
-theme.bg_normal     = "#262626ee"
+theme.bg_normal     = "#252526"
 theme.bg_focus      = "#0A7ACA"
 theme.bg_urgent     = "#F44747"
-theme.bg_minimize   = "#37373c"
+theme.bg_minimize   = "#303030"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#ffffff"
@@ -24,22 +24,23 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 -- button colors
-theme.bg_button = "#373737"
-theme.border_button = "#3d3d3d"
+theme.bg_button = "#3f3f3f"
+theme.bg_panel_button = theme.bg_normal
+theme.border_button = "#51514f"
+theme.border_panel_button = theme.bg_normal
 theme.button_active = "#0A7ACA"
-theme.button_active_alt = "#608b4e"
-theme.bg_inner_widget = "#2d2d2d"
-
+theme.button_active_alt = "#2ea043"
+theme.bg_inner_widget = "#303030"
+theme.bg_tasklist_active = "#0A7ACA33"
+theme.bg_tasklist_inactive = "#303030"
 theme.useless_gap   = dpi(1)
-theme.gap_single_client = false
+theme.gap_single_client = true
 theme.maximized_hide_border = true
 theme.border_width  = dpi(1)
-theme.border_normal = "#303030"
+theme.button_panel_border_width = dpi(0)
+theme.border_normal = "#3d3d3d"
 theme.border_focus  = "#0A7ACA"
 theme.border_marked = "#F44747"
-
--- widget bg colors
-theme.bg_widget = "#1e1e1e99"
 
 -- Margins and paddings and border width
 theme.notification_margin = dpi(6)
@@ -55,15 +56,21 @@ theme.btn_xs_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 4)
 end
 
-theme.btn_lg_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 6)
+-- theme.btn_lg_shape = function (cr, height, width)
+--     gears.shape.rounded_rect(cr, height, width, 6)
+-- end
+theme.btn_lg_shape = gears.shape.circle
+
+theme.btn_rounded = function (cr, height, width)
+    gears.shape.rounded_rect(cr, height, width, 20)
 end
 
 theme.widget_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 6)
 end
+
 theme.panel_button_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 4)
+    gears.shape.rounded_rect(cr, height, width, 0)
 end
 
 -- Icons
@@ -102,7 +109,7 @@ theme.icon_mic = themes_path .. "icons/audio-input-microphone.svg"
 theme.icon_airplane = themes_path .. "icons/airplane-mode.svg"
 
 theme.icon_system_power_off = themes_path .. "icons/system/system-shutdown.svg"
-theme.icon_system_restart = themes_path .. "icons/system/system-restart.svg" 
+theme.icon_system_restart = themes_path .. "icons/system/system-restart.svg"
 theme.icon_system_sleep = themes_path .. "icons/system/system-suspend.svg"
 theme.icon_system_screen_lock = themes_path .. "icons/system/system-lock-screen.svg"
 theme.icon_system_logout = themes_path .. "icons/system/system-log-out.svg"
@@ -137,10 +144,10 @@ theme.taglist_spacing     = 2
 
 -- Tasklist
 theme.tasklist_shape  = theme.panel_button_shape
-theme.tasklist_shape_border_width = theme.btn_border_width
-theme.tasklist_shape_border_color = theme.border_button
+theme.tasklist_shape_border_width = theme.button_panel_border_width
+theme.tasklist_shape_border_color = theme.border_panel_button
 theme.tasklist_bg_focus = theme.bg_focus
-theme.tasklist_bg_normal = theme.bg_button
+theme.tasklist_bg_normal = theme.border_button
 
 
 -- Snap area

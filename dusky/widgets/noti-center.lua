@@ -399,10 +399,10 @@ local notif_center = wibox.widget {
 		layout = wibox.layout.fixed.horizontal
 	},
 	border_width = beautiful.widget_border_width,
-	border_color = beautiful.border_button,
+	border_color = beautiful.border_normal,
 	shape = beautiful.widget_shape,
+	bg = beautiful.bg_normal,
 	widget = wibox.container.background,
-	
 }
 
 
@@ -410,12 +410,11 @@ local popupWidget = awful.popup {
     widget = notif_center,
     visible = false,
     ontop = true,
-	shape = beautiful.widget_shape,
     minimum_height = height,
     minimum_width = width,
     maximum_height = height,
     maximum_width = width,
-    bg = beautiful.bg_normal,
+    bg = "#00000000",
 	placement = function (w)
 		awful.placement.bottom_right(w, {
 			margins = {left = 0, top = 0, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}
@@ -434,10 +433,10 @@ local widget_button = wibox.widget{
 			margins = dpi(4),
 			widget = wibox.container.margin
 		},
-		bg = beautiful.bg_button,
+		bg = beautiful.bg_panel_button,
 		shape = beautiful.panel_button_shape,
-		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_button,
+		border_width = beautiful.button_panel_border_width,
+		border_color = beautiful.border_panel_button,
 		widget = wibox.container.background
 	},
 	margins = dpi(2),

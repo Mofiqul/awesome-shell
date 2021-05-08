@@ -170,7 +170,7 @@ naughty.connect_signal("request::display", function (n)
 
 	naughty.layout.box {
 		notification = n,
-		shape = beautiful.notification_shape,
+		bg = "#00000000",
 		widget_template = {
 			{
 				{
@@ -183,10 +183,10 @@ naughty.connect_signal("request::display", function (n)
 					widget = wibox.container.margin
 				},
 				border_width = beautiful.widget_border_width,
-				border_color = beautiful.border_button,
+				border_color = beautiful.border_normal,
+				bg = beautiful.bg_normal,
 				shape = beautiful.notification_shape,
 				widget = wibox.container.background
-
 			},
 			strategy = "max",
 			forced_width = beautiful.notification_max_width or dpi(300),

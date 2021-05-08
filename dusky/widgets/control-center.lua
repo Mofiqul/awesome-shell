@@ -28,10 +28,10 @@ local control_widget = wibox.widget{
 			bottom = dpi(4),
 			widget = wibox.container.margin
 		},
-		bg = beautiful.bg_button,
+		bg = beautiful.bg_panel_button,
 		shape = beautiful.panel_button_shape,
-		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_button,
+		border_width = beautiful.button_panel_border_width,
+		border_color = beautiful.border_panel_button,
 		widget = wibox.container.background
 	},
 	margins = dpi(2),
@@ -214,7 +214,6 @@ local battery_widget = function ()
 			forced_height = dpi(18),
 			widget = wibox.widget.imagebox
 		},
-		top = dpi(2),
 		widget = wibox.container.margin
 	}
 
@@ -236,7 +235,10 @@ local battery_widget = function ()
 			},
 			widget = wibox.container.place
 		},
-		margins = beautiful.widget_margin,
+		left = beautiful.widget_margin,
+		right = beautiful.widget_margin,
+		top = beautiful.widget_margin - dpi(4),
+		bottom = beautiful.widget_margin - dpi(4),
 		widget = wibox.container.margin
 	}
 	awful.widget.watch(
@@ -324,8 +326,7 @@ table.insert(rows, session_widget())
 local control_popup = awful.popup{
 	widget = {},
 	ontop = true,
-	shape = beautiful.widget_shape,
-	bg = beautiful.bg_normal,
+	bg = "#00000000",
     visible = false,
 	placement = function (w)
 		awful.placement.bottom_right(w, {
@@ -336,9 +337,10 @@ local control_popup = awful.popup{
 
 control_popup:setup({
 	widget = wibox.container.background,
-	border_width = beautiful.widget_border_width,
-	border_color = beautiful.border_button,
+	bg = beautiful.bg_normal,
 	shape = beautiful.widget_shape,
+	border_width = beautiful.widget_border_width,
+	border_color = beautiful.border_normal,
 	rows
 })
 

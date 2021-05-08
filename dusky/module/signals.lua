@@ -3,7 +3,8 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-
+local awesome = awesome
+local client = client
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -119,7 +120,7 @@ screen.connect_signal("arrange", function (s)
         --end
     --end
     for _, c in pairs(s.clients) do
-		if (is_single_client and not c.floating) or c.maximized then
+		if c.maximized then
             c.border_width = 0
     		awful.spawn("xprop -id " .. c.window .. " -f _COMPTON_SHADOW 32c -set _COMPTON_SHADOW 0")
         elseif layout == 'floating' then

@@ -1,19 +1,11 @@
 local wibox = require("wibox")
-local awful = require("awful")
-local gears = require("gears")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
-local default_apps = require("configurations.default-apps")
 
-
-local widget_menu = wibox.widget{
+local widget_systray = wibox.widget{
 	{
 		{
-			{
-				image = beautiful.awesome_menu_icon,
-				resize = true,
-				widget = wibox.widget.imagebox
-			},
+			wibox.widget.systray,
 			left = dpi(2),
 			right = dpi(2),
 			top = dpi(2),
@@ -29,17 +21,4 @@ local widget_menu = wibox.widget{
 	margins = dpi(2),
 	widget = wibox.container.margin
 }
-
-widget_menu:buttons(
-	gears.table.join(
-		awful.button(
-			{},
-			1,
-			nil,
-			function()
-				awful.spawn(default_apps.app_menu, false)	
-			end
-		)
-	)
-)
-return widget_menu
+return widget_systray

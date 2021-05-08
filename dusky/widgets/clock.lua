@@ -31,10 +31,10 @@ local create_clock = function()
 				right = dpi(6),
 				widget = wibox.container.margin
 			},
-			bg = beautiful.bg_button,
+			bg = beautiful.bg_panel_button,
 			shape = beautiful.panel_button_shape,
-			border_width = beautiful.btn_border_width,
-			border_color = beautiful.border_button,
+			border_width = beautiful.button_panel_border_width,
+			border_color = beautiful.border_panel_button,
 			widget = wibox.container.background
 		},
 		margins = dpi(2),
@@ -65,7 +65,7 @@ local create_clock = function()
 	local calendar = awful.popup{
 		ontop = true,
 		visible = false,
-		shape = beautiful.widget_shape,
+		bg = "#00000000",
 		placement = function (w)
 			awful.placement.bottom_right(w, {
 				margins = {left = 0, top = 0, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}
@@ -77,8 +77,9 @@ local create_clock = function()
 				margins = beautiful.widget_margin,
 				widget = wibox.container.margin,
 			},
-			border_width = dpi(1),
-			border_color = beautiful.border_button,
+			border_width = beautiful.widget_border_width,
+			border_color = beautiful.border_normal,
+			bg = beautiful.bg_normal,
 			shape = beautiful.widget_shape,
 			widget = wibox.container.background
 		}

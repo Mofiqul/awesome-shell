@@ -17,9 +17,9 @@ local layoutbox = function (s)
 				widget = wibox.container.margin
 			},
 			shape = beautiful.panel_button_shape,
-			bg = beautiful.bg_button,
-			border_width = beautiful.btn_border_width,
-			border_color = beautiful.border_button,
+			bg = beautiful.bg_panel_button,
+			border_width = beautiful.button_panel_border_width,
+			border_color = beautiful.border_panel_button,
 			widget = wibox.container.background
 		},
 		margins = dpi(2),

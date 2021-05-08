@@ -85,9 +85,11 @@ local build_power_button = function(name, icon, callback)
 					widget = wibox.container.margin
 				},
 				bg = beautiful.bg_button,
+				border_width = beautiful.btn_border_width,
+				border_color = beautiful.border_button,
+				shape = beautiful.btn_lg_shape,
 				widget = wibox.container.background
 			},
-			shape = beautiful.btn_lg_shape,
 			forced_width = dpi(64),
 			forced_height = dpi(64),
 			widget = clickable_container
@@ -119,7 +121,7 @@ local cancel_button = wibox.widget{
 	bg = beautiful.bg_button,
 	border_width = beautiful.btn_border_width,
 	border_color = beautiful.border_button,
-	shape = beautiful.btn_lg_shape,
+	shape = beautiful.btn_rounded,
 	{
 		top = dpi(5),
 		bottom = dpi(5),

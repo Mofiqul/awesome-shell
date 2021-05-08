@@ -40,7 +40,7 @@ end
 
 beautiful.init( gears.filesystem.get_configuration_dir() .. "/themes/dark/theme.lua")
 
-terminal = "kitty --single-instance"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -96,7 +96,7 @@ awful.screen.connect_for_each_screen(function(s)
         require("widgets.panel.tasklist")(s), -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            require("widgets.panel.systray"),
+            require("widgets.panel.systray-no-toggle"),
             require("widgets.panel.layoutbox")(s),
 			require("widgets.clock")(),
 			require("widgets.noti-center"),
