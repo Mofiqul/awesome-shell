@@ -7,35 +7,36 @@ local battery_widget = require("widgets.panel.battery")
 local volume_widget = require("widgets.panel.volume")
 local network_indicator = require("widgets.panel.network")
 local create_button = require("widgets.buttons.create-button")
-
+local btn_container = require("widgets.clickable-container")
+local btn_bg_container = require("widgets.button-active-container")
 -- Widget to show on panel
 local control_widget = wibox.widget{
 	{
 		{
 			{
 				{
-					volume_widget(),
-					battery_widget(),
-					network_indicator,
-					spacing = dpi(4),
-					layout = wibox.layout.fixed.horizontal
+					{
+						volume_widget(),
+						battery_widget(),
+						network_indicator,
+						spacing = dpi(4),
+						layout = wibox.layout.fixed.horizontal
+					},
+					widget = wibox.container.place
 				},
-				widget = wibox.container.place
+				left = dpi(6),
+				right = dpi(6),
+				top = dpi(4),
+				bottom = dpi(4),
+				widget = wibox.container.margin
 			},
-			left = dpi(6),
-			right = dpi(6),
-			top = dpi(4),
-			bottom = dpi(4),
-			widget = wibox.container.margin
+			id = "background",
+			widget = btn_bg_container
 		},
-		bg = beautiful.bg_panel_button,
-		shape = beautiful.panel_button_shape,
-		border_width = beautiful.button_panel_border_width,
-		border_color = beautiful.border_panel_button,
-		widget = wibox.container.background
+		margins = dpi(2),
+		widget = wibox.container.margin
 	},
-	margins = dpi(2),
-	widget = wibox.container.margin
+	widget = btn_container
 }
 
 
@@ -344,17 +345,19 @@ control_popup:setup({
 	rows
 })
 
-control_widget:buttons(
-	gears.table.join(
-		awful.button( {}, 1, function() 
-			if control_popup.visible then 
+control_widget:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then
+			local background_widget = self:get_children_by_id('background')[1]
+			if control_popup.visible then
 				control_popup.visible = not control_popup.visible
+				background_widget.set_inactive()
 			else
 				control_popup.visible = true
+				background_widget.set_active()
 			end
-		end )
-	)
-)
+	end
+end)
+
 
 awesome.connect_signal("control-center::hide", function ()
 	control_popup.visible = false

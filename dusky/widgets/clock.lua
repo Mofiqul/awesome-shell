@@ -4,6 +4,7 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widgets.clickable-container')
+local btn_bg_container = require("widgets.button-active-container")
 
 local create_clock = function()
 
@@ -16,51 +17,30 @@ local create_clock = function()
 	)
 
 	clock_widget = wibox.widget {
-		{
-			{
+		{	{
 				{
 					{
-						clock_widget,
-						widget = wibox.container.margin
+						{
+							clock_widget,
+							widget = wibox.container.margin
+						},
+						widget = clickable_container
 					},
-					widget = clickable_container
+					top = dpi(2),
+					bottom = dpi(2),
+					left = dpi(6),
+					right = dpi(6),
+					widget = wibox.container.margin
 				},
-				top = dpi(2),
-				bottom = dpi(2),
-				left = dpi(6),
-				right = dpi(6),
-				widget = wibox.container.margin
+				id = "background",
+				widget = btn_bg_container
 			},
-			bg = beautiful.bg_panel_button,
-			shape = beautiful.panel_button_shape,
-			border_width = beautiful.button_panel_border_width,
-			border_color = beautiful.border_panel_button,
-			widget = wibox.container.background
+			margins = dpi(2),
+			widget = wibox.container.margin
 		},
-		margins = dpi(2),
-		widget = wibox.container.margin
+		widget = clickable_container
 	}
 
-	clock_widget:connect_signal(
-		'mouse::enter',
-		function()
-			local w = mouse.current_wibox
-			if w then
-				old_cursor, old_wibox = w.cursor, w
-				w.cursor = 'hand1'
-			end
-		end
-	)
-
-	clock_widget:connect_signal(
-		'mouse::leave',
-		function()
-			if old_wibox then
-				old_wibox.cursor = old_cursor
-				old_wibox = nil
-			end
-		end
-	)
 
 	local calendar = awful.popup{
 		ontop = true,
@@ -85,22 +65,18 @@ local create_clock = function()
 		}
 	}
 
-	clock_widget:buttons(
-		gears.table.join(
-			awful.button(
-				{},
-				1,
-				function()
-					if calendar.visible then
-						calendar.visible = not calendar.visible
-					else 
-						calendar.visible = true
-						--calendar:move_next_to(mouse.current_widget_geometry)
-					end
+	clock_widget:connect_signal("button::press", function (self, _, _, button)
+		if button == 1 then
+				local background_widget = self:get_children_by_id('background')[1]
+				if calendar.visible then
+					calendar.visible = not calendar.visible
+					background_widget.set_inactive()
+				else
+					calendar.visible = true
+					background_widget.set_active()
 				end
-			)
-		)
-	)
+		end
+	end)
 
 	awesome.connect_signal("calendar::show", function ()
 		calendar.visible = true

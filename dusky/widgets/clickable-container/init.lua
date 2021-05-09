@@ -1,11 +1,10 @@
 local wibox = require('wibox')
-local beautiful = require('beautiful')
 
 local create_click_events = function(widget)
 
 	local container = wibox.widget {
 		widget,
-		widget = wibox.container.background
+		widget = wibox.container.place
 	}
 
 	local old_cursor, old_wibox

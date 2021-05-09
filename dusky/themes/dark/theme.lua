@@ -26,8 +26,10 @@ theme.fg_minimize   = "#ffffff"
 -- button colors
 theme.bg_button = "#3f3f3f"
 theme.bg_panel_button = theme.bg_normal
+theme.bg_panel_button_active = theme.bg_button
 theme.border_button = "#51514f"
 theme.border_panel_button = theme.bg_normal
+theme.border_panel_button_active = theme.border_button
 theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#2ea043"
 theme.bg_inner_widget = "#303030"
@@ -38,6 +40,7 @@ theme.gap_single_client = true
 theme.maximized_hide_border = true
 theme.border_width  = dpi(1)
 theme.button_panel_border_width = dpi(0)
+theme.button_panel_border_width_active = dpi(1)
 theme.border_normal = "#3d3d3d"
 theme.border_focus  = "#0A7ACA"
 theme.border_marked = "#F44747"
@@ -73,6 +76,9 @@ theme.panel_button_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 0)
 end
 
+theme.panel_button_shape_active = function (cr, height, width)
+    gears.shape.rounded_rect(cr, height, width, 4)
+end
 -- Icons
 theme.icon_times = themes_path .. "icons/remove.svg"
 -- awesome icon 

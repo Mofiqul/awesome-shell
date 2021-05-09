@@ -5,6 +5,7 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require("widgets.clickable-container")
+local btn_bg_container = require("widgets.button-active-container")
 
 local clear_all_button = wibox.widget{
 	{
@@ -30,7 +31,6 @@ local clear_all_button = wibox.widget{
 --	bg = beautiful.bg_button,
 --	border_width = beautiful.btn_border_width,
 --	border_color = beautiful.border_button,
-	shape = beautiful.btn_lg_shape,
 	widget = wibox.container.background
 }
 
@@ -423,44 +423,37 @@ local popupWidget = awful.popup {
 }
 
 local widget_button = wibox.widget{
-	{
-		{
+	{	{
 			{
-				image = beautiful.icon_bell,
-				resize = true,
-				widget = wibox.widget.imagebox
+				{
+					image = beautiful.icon_bell,
+					resize = true,
+					widget = wibox.widget.imagebox
+				},
+				margins = dpi(4),
+				widget = wibox.container.margin
 			},
-			margins = dpi(4),
-			widget = wibox.container.margin
+			id = "background",
+			widget = btn_bg_container
 		},
-		bg = beautiful.bg_panel_button,
-		shape = beautiful.panel_button_shape,
-		border_width = beautiful.button_panel_border_width,
-		border_color = beautiful.border_panel_button,
-		widget = wibox.container.background
+		margins = dpi(2),
+		widget = wibox.container.margin
 	},
-	margins = dpi(2),
-	widget = wibox.container.margin
+	widget = clickable_container
 }
 
-widget_button:buttons(
-	gears.table.join(
-		awful.button(
-			{},
-			1,
-			nil,
-			function()
-				if popupWidget.visible then 
-					popupWidget.visible = not popupWidget.visible
-				else
-					popupWidget.visible = true
-					--popupWidget:move_next_to(mouse.current_widget_geometry)
-				end
+widget_button:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then 
+			local background_widget = self:get_children_by_id('background')[1]
+			if popupWidget.visible then
+				popupWidget.visible = not popupWidget.visible
+				background_widget.set_inactive()
+			else
+				popupWidget.visible = true
+				background_widget.set_active()
 			end
-		)
-	)
-)
-
+	end
+end)
 
 awesome.connect_signal("noti-center::show", function ()
 	popupWidget.visible = true
