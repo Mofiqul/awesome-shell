@@ -25,10 +25,8 @@ window {
 	border:							1px;
 	border-color:					@border;
     border-radius:                  6px;
-	width:							35%;
-    location:                       northwest;
-    x-offset:                       5px;
-    y-offset:                       337px;
+	width:							50%;
+    location:                       center;
 }
 
 prompt {
@@ -44,6 +42,7 @@ entry {
     placeholder-color:              @foreground;
     expand:                         true;
     horizontal-align:               0;
+	font:                           "Ubuntu 12";
     placeholder:                    "Type to search";
     padding:                        0.30% 0% 0% 0.25%;
     blink:                          true;

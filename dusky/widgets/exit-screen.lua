@@ -6,7 +6,6 @@ local dpi = beautiful.xresources.apply_dpi
 local default_apps = require('configurations.default-apps')
 local clickable_container = require('widgets.clickable-container')
 local helpers = require("libs.helpers")
-local widget_icon_dir = beautiful.theme_path .. 'icons/system/'
 local config_dir = gears.filesystem.get_configuration_dir()
 local profile_name = wibox.widget {
 	markup = 'user@hostname',
@@ -84,9 +83,9 @@ local build_power_button = function(name, icon, callback)
 					margins = dpi(8),
 					widget = wibox.container.margin
 				},
-				bg = beautiful.bg_button,
+				bg = beautiful.bg_button .. "99",
 				border_width = beautiful.btn_border_width,
-				border_color = beautiful.border_button,
+				border_color = beautiful.border_button .. "99",
 				shape = beautiful.btn_lg_shape,
 				forced_width = dpi(64),
 				forced_height = dpi(64),
@@ -120,9 +119,9 @@ local cancel_button = wibox.widget{
 	widget = clickable_container,
 	{
 		widget = wibox.container.background,
-		bg = beautiful.bg_button,
+		bg = beautiful.bg_button .. "99",
 		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_button,
+		border_color = beautiful.border_button .. "99",
 		shape = beautiful.btn_rounded,
 		{
 			top = dpi(5),
@@ -177,6 +176,7 @@ local suspend = build_power_button('Sleep', beautiful.icon_system_sleep, suspend
 local logout = build_power_button('Logout', beautiful.icon_system_logout, logout_command)
 local lock = build_power_button('Lock', beautiful.icon_system_screen_lock, lock_command)
 
+
 local create_exit_screen = function(s)
 	s.exit_screen = wibox
 	{
@@ -184,7 +184,6 @@ local create_exit_screen = function(s)
 		type = 'splash',
 		visible = false,
 		ontop = true,
-		bg = beautiful.bg_normal,
 		fg = beautiful.fg_normal,
 		height = s.geometry.height,
 		width = s.geometry.width,
@@ -263,6 +262,18 @@ local create_exit_screen = function(s)
 		nil
 	}
 
+
+	-- Creating a blured version of wallpaper if not exits for exit screen background
+	local wallpaper = config_dir .. "/themes/dark/background.png"
+	local wallpaper_blur = config_dir .. "/themes/dark/background-blur.png"
+	if not gears.filesystem.file_readable(wallpaper_blur) then
+		awful.spawn.easy_async_with_shell("convert ".. wallpaper .." -blur 0x16 " .. wallpaper_blur, function ()
+			s.exit_screen.bgimage = wallpaper_blur
+		end)
+	else
+		s.exit_screen.bgimage = wallpaper_blur
+	end
+
 	s.exit_screen:buttons(
 		gears.table.join(
 			awful.button(
@@ -282,6 +293,7 @@ local create_exit_screen = function(s)
 		)
 	)
 end
+
 
 
 screen.connect_signal(
