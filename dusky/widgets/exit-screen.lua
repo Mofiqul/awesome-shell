@@ -88,10 +88,10 @@ local build_power_button = function(name, icon, callback)
 				border_width = beautiful.btn_border_width,
 				border_color = beautiful.border_button,
 				shape = beautiful.btn_lg_shape,
+				forced_width = dpi(64),
+				forced_height = dpi(64),
 				widget = wibox.container.background
 			},
-			forced_width = dpi(64),
-			forced_height = dpi(64),
 			widget = clickable_container
 		},
 		left = dpi(24),
@@ -118,20 +118,23 @@ end
 
 local cancel_button = wibox.widget{
 	widget = clickable_container,
-	bg = beautiful.bg_button,
-	border_width = beautiful.btn_border_width,
-	border_color = beautiful.border_button,
-	shape = beautiful.btn_rounded,
 	{
-		top = dpi(5),
-		bottom = dpi(5),
-		left = dpi(8),
-		right = dpi(8),
-		widget = wibox.container.margin,
+		widget = wibox.container.background,
+		bg = beautiful.bg_button,
+		border_width = beautiful.btn_border_width,
+		border_color = beautiful.border_button,
+		shape = beautiful.btn_rounded,
 		{
-			text = "Cancel",
-			font = "Ubuntu 12",
-			widget = wibox.widget.textbox
+			top = dpi(5),
+			bottom = dpi(5),
+			left = dpi(8),
+			right = dpi(8),
+			widget = wibox.container.margin,
+			{
+				text = "Cancel",
+				font = "Ubuntu 12",
+				widget = wibox.widget.textbox
+			}
 		}
 	}
 }

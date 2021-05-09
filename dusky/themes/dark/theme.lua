@@ -127,14 +127,19 @@ theme.icon_dark_mode = themes_path .. "icons/contrast.svg"
 theme.icon_redshift = themes_path .. "icons/redshift-status-on.svg"
 
 theme.icon_floating = themes_path .. "layouts/floating.svg"
-
-
+theme.icon_fullscreen = themes_path .. "icons/view-fullscreen.svg"
+theme.icon_screen = themes_path .. "icons/computer.svg"
+theme.icon_crop = themes_path .. "icons/image-crop.svg"
+theme.icon_window = themes_path .. "icons/window.svg"
+theme.icon_add = themes_path .. "icons/add.svg"
+theme.icon_minus = themes_path .. "icons/minus.svg"
 
 -- Icons for notifications
 theme.icon_screenhost_taken = themes_path .. "icons/64x64/camera-photo.svg"
 theme.icon_noti_error = themes_path .. "icons/48x48/dialog-error.svg"
 theme.icon_noti_info = themes_path .. "icons/48x48/dialog-information.svg"
 theme.icon_bat_caution = themes_path .. "icons/48x48/battery-caution.svg"
+theme.icon_recorder = themes_path .. "icons/48x48/camera-on.svg"
 -- Taglist
 --- Generate taglist squares:
 local taglist_square_size = dpi(5)
