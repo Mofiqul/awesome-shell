@@ -396,6 +396,12 @@ btn_close:connect_signal("button::press", function (_, _, _, button)
 	end
 end)
 
-local screen_shot_button = create_button.circle_big(beautiful.icon_camera, nil, display_popup)
+local screen_shot_button = create_button.circle_big(beautiful.icon_camera)
+
+screen_shot_button:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then
+		display_popup()
+	end
+end)
 
 return screen_shot_button

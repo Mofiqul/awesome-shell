@@ -103,8 +103,13 @@ local create_notifbox =  function (n)
 	local icon = wibox.widget{
 		image = n.icon,
 		resize = true,
+		valign = "center",
+		halign = "center",
 		forced_height = dpi(42),
 		forced_width = dpi(42),
+		--clip_shape = gears.shape.circle,
+		vertical_fit_policy = "filt",
+		horizontal_fit_policy = "filt",
 		widget = wibox.widget.imagebox
 	}
 
@@ -263,7 +268,7 @@ local create_notifbox =  function (n)
 			widget = wibox.widget.textbox,
 		},
 		{
-			text = n.message,
+			markup = n.message,
 			font = beautiful.font_small,
 			widget = wibox.widget.textbox
 		},
@@ -298,8 +303,6 @@ local create_notifbox =  function (n)
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_inner_widget,
-		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_normal,
 		shape = beautiful.notification_shape,
 		widget = wibox.container.background
 	}
@@ -325,10 +328,11 @@ local create_notifbox =  function (n)
 end
 
 
+
 local notifbox_layout = wibox.layout.fixed.vertical()
 scroller(notifbox_layout)
-notifbox_layout.spacing = beautiful.notification_margin
-notifbox_layout.forced_width = dpi(300)
+notifbox_layout.spacing = dpi(10)
+--notifbox_layout.forced_width = dpi(300)
 
 reset_notifbox_layout = function()
     notifbox_layout:reset(notifbox_layout)
@@ -362,107 +366,4 @@ naughty.connect_signal("added", function(n)
 	notifbox_layout:insert(1,create_notifbox(n))
 end)
 
-local notif_header = wibox.widget {
-    markup = 'Notification Center',
-    font = beautiful.font_large,
-    align = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox
-}
-
-local notification =  wibox.widget {
-    {
-        notif_header,
-        nil,
-        clear_all_button,
-        expand = "none",
-        spacing = dpi(10),
-        layout = wibox.layout.align.horizontal
-    },
-    notifbox_layout,
-
-    spacing = beautiful.widget_margin,
-    layout = wibox.layout.fixed.vertical
-}
-
-local width = dpi(265)
-local height = dpi(350)
-
-local notif_center = wibox.widget {
-	{
-		{
-			notification,
-			margins = beautiful.widget_margin,
-			widget = wibox.container.margin
-		},
-		expand = "none",
-		layout = wibox.layout.fixed.horizontal
-	},
-	border_width = beautiful.widget_border_width,
-	border_color = beautiful.border_normal,
-	shape = beautiful.widget_shape,
-	bg = beautiful.bg_normal,
-	widget = wibox.container.background,
-}
-
-
-local popupWidget = awful.popup {
-    widget = notif_center,
-    visible = false,
-    ontop = true,
-    minimum_height = height,
-    minimum_width = width,
-    maximum_height = height,
-    maximum_width = width,
-    bg = "#00000000",
-	placement = function (w)
-		awful.placement.bottom_right(w, {
-			margins = {left = 0, top = 0, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}
-		})
-	end
-}
-
-local widget_button = wibox.widget{
-	{	{
-			{
-				{
-					image = beautiful.icon_bell,
-					resize = true,
-					widget = wibox.widget.imagebox
-				},
-				margins = dpi(4),
-				widget = wibox.container.margin
-			},
-			id = "background",
-			widget = btn_bg_container
-		},
-		margins = dpi(2),
-		widget = wibox.container.margin
-	},
-	widget = clickable_container
-}
-
-widget_button:connect_signal("button::press", function (self, _, _, button)
-	if button == 1 then 
-			local background_widget = self:get_children_by_id('background')[1]
-			if popupWidget.visible then
-				popupWidget.visible = not popupWidget.visible
-				background_widget.set_inactive()
-			else
-				popupWidget.visible = true
-				background_widget.set_active()
-			end
-	end
-end)
-
-awesome.connect_signal("noti-center::show", function ()
-	popupWidget.visible = true
-end)
-
-awesome.connect_signal("noti-center::hide", function ()
-	popupWidget.visible = true
-end)
-
-return widget_button
-
-
+return notifbox_layout

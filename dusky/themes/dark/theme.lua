@@ -44,7 +44,7 @@ theme.button_panel_border_width_active = dpi(1)
 theme.border_normal = "#3d3d3d"
 theme.border_focus  = "#0A7ACA"
 theme.border_marked = "#F44747"
-
+theme.bg_yellow = "#f36351"
 -- Margins and paddings and border width
 theme.notification_margin = dpi(6)
 theme.widget_margin = dpi(6)

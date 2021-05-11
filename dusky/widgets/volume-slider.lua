@@ -18,50 +18,27 @@ local volume_slider =  function()
 	-- slider var
 	local widget_slider = wibox.widget {
 		bar_shape = gears.shape.rounded_rect,
-		bar_height = dpi(5),
+		bar_height = dpi(6),
 		bar_color = beautiful.fg_normal,
-		bar_border_color = beautiful.border_button,
-		bar_border_width = dpi(1),
+		bar_active_color = beautiful.bg_focus,
 
 		handle_shape = gears.shape.circle,
-		handle_width = dpi(15),
+		handle_width = dpi(16),
 		handle_color = beautiful.fg_normal,
 
 		value = 40,
 		minimum = 0,
 		maximum = 100,
-		forced_width = dpi(185),
 		forced_height = dpi(20),
 		widget = wibox.widget.slider
-		--max_value     = 100,
-		--value         = 50,
-		--forced_height = dpi(10),
-		--forced_width  = dpi(170),
-		--margins = {top = dpi(8), bottom = dpi(8)},
-		--border_width  = 0,
-		--color = beautiful.fg_normal,
-		--background_color = beautiful.bg_button,
-		--shape = gears.shape.rounded_bar,
-		--bar_shape = gears.shape.rounded_bar,
-		--widget = wibox.widget.progressbar,
-	}
-	
-	local widget_lebel = wibox.widget {
-		text = widget_slider.value .. "%",
-		font = beautiful.font,
-		forced_width = dpi(35),
-		widget = wibox.widget.textbox
 	}
 
 	local slider_wrapped = wibox.widget{
-		{
 			widget_icon,
 			widget_slider,
-			widget_lebel,
-			spacing = dpi(5),
+			spacing = dpi(10),
+			forced_width = dpi(280),
 			layout = wibox.layout.fixed.horizontal
-		},
-		widget = wibox.container.place
 	}
 
 
@@ -98,7 +75,6 @@ local volume_slider =  function()
 		function(_, stdout)
 			local volume = string.match(stdout, '(%d?%d?%d)%%')
 			widget_slider.value = tonumber(volume)
-			widget_lebel:set_text(volume.. "%")
 		end
 	)
 
@@ -134,7 +110,6 @@ local volume_slider =  function()
 		function(_,value)
 			--local v = math.floor((value-0)/(170-0) * (100-0) + 0)
 			set_volume(value)
-			widget_lebel:set_text(value .. "%")
 		end
 	)
 

@@ -3,15 +3,20 @@ local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
 
 local initial_action = function (button) 
+	local background = button:get_children_by_id("background")[1]
+	local label = button:get_children_by_id("label")[1]
+
 	awful.widget.watch(
 		[[sh -c "amixer | grep 'Front Left: Capture' | awk -F' ' '{print $6}' | sed -e 's/\[//' -e 's/\]//'"]], 
 		10, 
 		function(_, stdout)
 			--naughty.notification({text = stdout})
 			if stdout:match('on') then
-				button:set_bg(beautiful.button_active)
+				background:set_bg(beautiful.button_active)
+				label:set_text("In Use")
 			else
-				button:set_bg(beautiful.bg_button)
+				background:set_bg(beautiful.bg_button)
+				label:set_text("Off")
 			end
 	end)
 end
@@ -20,6 +25,16 @@ local onclick_action = function()
 	awful.spawn.with_shell("amixer -D pulse sset Capture  toggle")
 end
 
-local microphone_button = create_button.circle_big(beautiful.icon_mic, initial_action, onclick_action)
+local microphone_button = create_button.circle_big(beautiful.icon_mic)
+
+
+microphone_button:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then
+		onclick_action()
+		initial_action(self)
+	end
+end)
+
+initial_action(microphone_button)
 
 return microphone_button

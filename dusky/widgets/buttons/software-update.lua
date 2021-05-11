@@ -3,9 +3,7 @@ local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
 local default_apps = require("configurations.default-apps")
 
-local software_update = create_button.circle_big(beautiful.icon_update_none, nil, function ()
-	awful.spawn.with_shell(default_apps.software_updater)
-end)
+local software_update = create_button.circle_big(beautiful.icon_update_none)
 
 local naughty = require("naughty")
 
@@ -25,8 +23,13 @@ awful.widget.watch(
 	[[sh -c "pacman -Qu | wc -l"]],
 	10,
 	function (_, stdout)
-		if stdout:gsub("%s+", "") ~= "0" then
-			software_update:set_bg(beautiful.button_active)
+		local background = software_update:get_children_by_id("background")[1]
+		local label = software_update:get_children_by_id("label")[1]
+		local update_count = stdout:gsub("%s+", "")
+
+		if update_count ~= "0" then
+			background:set_bg(beautiful.button_active)
+			label:set_text(update_count)
 			if notification_sent == 0 then
 				naughty.notification({
 					title = "New software updates",
@@ -44,9 +47,15 @@ awful.widget.watch(
 				notification_sent = 1
 			end
 		else
-			software_update:set_bg(beautiful.bg_button)
+			background:set_bg(beautiful.bg_button)
+			label:set_text("None")
 		end
 	end
 )
 
+software_update:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then
+		awful.spawn.with_shell(default_apps.software_updater)
+	end
+end)
 return software_update

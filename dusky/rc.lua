@@ -99,7 +99,7 @@ awful.screen.connect_for_each_screen(function(s)
             require("widgets.panel.systray-no-toggle"),
             require("widgets.panel.layoutbox")(s),
 			require("widgets.clock")(),
-			require("widgets.noti-center"),
+		--	require("widgets.noti-center"),
 			require("widgets.control-center"),
         },
     }

@@ -305,6 +305,23 @@ local globalkeys = gears.table.join(
 			awful.spawn.single_instance('scrot', false)
 		end,
 		{description = 'Display configuration', group = 'hotkeys'}
+	),
+	awful.key(
+		{ modkey, "Shift"},
+		's',
+		function()
+			local c = client.focus
+			if c.sticky then
+				c.floating = not c.floating
+				c.sticky = not c.sticky
+				c.ontop = not c.ontop
+			else
+				c.sticky = true
+				c.floating = true
+				c.ontop = true
+			end
+		end,
+		{description = 'Toggle client sticky', group = 'client'}
 	)
 )
 

@@ -1,16 +1,23 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-local filesystem = require("gears").filesystem
 local create_button = require("widgets.buttons.create-button")
-local config_dir = filesystem.get_configuration_dir()
-local helpers = require("libs.helpers")
 
-local onclick_action = function ()
-	awful.spawn.with_shell(config_dir .. "scripts/light-mode.sh")
-	helpers.sleep(.2)
-	awesome.restart()
-end
 
-local lock_screen_button = create_button.circle_big(beautiful.icon_dark_mode, nil, onclick_action)
+local button_battery = create_button.circle_big(beautiful.battery_icon)
 
-return lock_screen_button
+
+local label = button_battery:get_children_by_id("label")[1]
+
+awful.widget.watch(
+	[[sh -c "
+	bat_percentage=$(acpi | awk '{print $4}')
+	echo "$bat_percentage"
+	"]],
+	5,
+	function (_, stdout)
+		local percent = stdout:gsub(",", ""):gsub("%s+", "")
+		label:set_text(percent)
+	end
+)
+
+return button_battery

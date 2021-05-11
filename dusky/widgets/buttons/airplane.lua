@@ -2,18 +2,23 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
 
-local initial_action = function (button) 
-	awful.widget.watch("rfkill list all", 10, function(_, stdout) 
+local initial_action = function (button)
+	local background = button:get_children_by_id("background")[1]
+	local label = button:get_children_by_id("label")[1]
+
+	awful.widget.watch("rfkill list all", 10, function(_, stdout)
 		if stdout:match('Soft blocked: yes') then
-			button:set_bg(beautiful.button_active)
+			background:set_bg(beautiful.button_active)
+			label:set_text("On")
 		else
-			button:set_bg(beautiful.bg_button)
+			background:set_bg(beautiful.bg_button)
+			label:set_text("Off")
 		end
 	end)
 end
 
 local onclick_action = function()
-	awful.spawn.easy_async("rfkill list all", function(stdout) 
+	awful.spawn.easy_async("rfkill list all", function(stdout)
 		if stdout:match('Soft blocked: yes') then
 			awful.spawn.with_shell("rfkill unblock all")
 		else
@@ -21,6 +26,17 @@ local onclick_action = function()
 		end
 	end)
 end
-local airplane_button = create_button.circle_big(beautiful.icon_airplane, initial_action, onclick_action)
+
+local airplane_button = create_button.circle_big(beautiful.icon_airplane)
+
+
+airplane_button:connect_signal("button::press", function (self, _, _, button)
+	if button == 1 then
+		onclick_action()
+		initial_action(self)
+	end
+end)
+
+initial_action(airplane_button)
 
 return airplane_button

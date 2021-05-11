@@ -6,53 +6,12 @@ local dpi = beautiful.xresources.apply_dpi
 local network = require("module.network")
 local setting = require("configurations.settings")
 local default_apps = require("configurations.default-apps")
+local create_button = require("widgets.buttons.create-button")
 
+local network_button = create_button.circle_big(beautiful.wireless_connected_icon) 
 
-local widget_icon = wibox.widget{
-	id = "icon",
-	image = beautiful.wireless_connected_icon,
-	forced_width = 26,
-	forced_height = 26,
-	widget = wibox.widget.imagebox
-}
-
-local status_text = wibox.widget{
-	text = "Off",
-	font = "Ubuntu 8",
-	widget = wibox.widget.textbox
-}
-local widget_name = wibox.widget{
-	text = "Wifi",
-	font = "Ubuntu Bold 10",
-	widget = wibox.widget.textbox
-}
-local text = wibox.widget{
-	widget_name,
-	status_text,
-	layout = wibox.layout.fixed.vertical
-}
-
-local network_button = wibox.widget {
-	{
-		{
-			widget_icon,
-			text,
-			spacing = dpi(4),
-			layout = wibox.layout.fixed.horizontal
-		},
-		top = dpi(13),
-		bottom = dpi(10),
-		left = dpi(10),
-		right = dpi(10),
-		widget = wibox.container.margin
-	},
-	forced_width = dpi(115),
-	shape = gears.shape.rounded_rect,
-	bg = beautiful.bg_button,
-	shape_border_color = beautiful.border_button,
-	shape_border_width = dpi(1),
-	widget = wibox.container.background
-}
+local background = network_button:get_children_by_id("background")[1]
+local label = network_button:get_children_by_id("label")[1]
 
 local update_button = function()
 	awful.spawn.easy_async_with_shell(
@@ -100,45 +59,24 @@ local update_button = function()
 			local mode = stdout:gsub('%\n', '')
 			if stdout:match('No internet connection') then
 				if mode == 'wireless' then
-					network_button:set_bg(beautiful.bg_button)
-					widget_name:set_text("Wifi")
-					status_text:set_text("Offline")
+					background:set_bg(beautiful.bg_button)
+					label:set_text("Offline")
 				else
-					network_button:set_bg(beautiful.bg_button)
-					widget_name:set_text("Ethernet")
-					status_text:set_text("Offline")
+					background:set_bg(beautiful.bg_button)
+					label:set_text("Offline")
 				end
 			else
 				if mode == 'wireless' then
-					network_button:set_bg(beautiful.button_active_alt)
-					widget_name:set_text("Wifi")
-					network.set_widgettext_with_ssid(status_text)
+					background:set_bg(beautiful.button_active_alt)
+					network.set_widgettext_with_ssid(label)
 				else
-					network_button:set_bg(beautiful.button_active_alt)
-					widget_name:set_text("Ethernet")
-					status_text:set_text("Connected")
+					background:set_bg(beautiful.button_active_alt)
+					label:set_text("Connected")
 				end
 			end
 		end
 	)
 end
-
-
-local old_cursor, old_wibox
-
-network_button:connect_signal("mouse::enter", function(c)
-	local wb = mouse.current_wibox
-	old_cursor, old_wibox = wb.cursor, wb
-	wb.cursor = "hand1"
-end)
-network_button:connect_signal("mouse::leave", function(c)
-	if old_wibox then
-    	old_wibox.cursor = old_cursor
-    	old_wibox = nil
-	end
-end)
-
-
 
 gears.timer {
 	timeout = 5,
@@ -157,10 +95,10 @@ network_button:connect_signal(
 			awful.spawn.easy_async_with_shell("rfkill list wifi", function (stdout)
 				if stdout:match("Soft blocked: yes") then
 					awful.spawn.single_instance("rfkill unblock wifi")
-					status_text:set_text("Turning on...")
+					label:set_text("Turning on...")
 				else 
 					awful.spawn.single_instance("rfkill block wifi")
-					status_text:set_text("Turning off...")
+					label:set_text("Turning off...")
 				end
 			end)
 		end
