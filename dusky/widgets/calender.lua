@@ -27,14 +27,14 @@ styles.focus = {
 
 styles.header = {
 	fg_color = beautiful.fg_normal,
-	bg_color = beautiful.bg_inner_widget,
-    markup = function(t) return '<b>' .. string.upper(t) .. '</b>' end,
+	bg_color = "#00000000",
+    markup = function(t) return '<span font="Ubuntu bold 12">' .. t .. '</span>' end,
 	shape = beautiful.widget_shape
 }
 
 styles.weekday = {
-	fg_color = beautiful.bg_focus,
-    markup = function(t) return '<b>' .. string.upper(t) .. '</b>' end,
+	fg_color = beautiful.bg_normal_alt,
+    markup = function(t) return string.upper(t) end,
 }
 
 local function decorate_cell(widget, flag, date)
@@ -78,21 +78,14 @@ local calendar = wibox.widget{
 local button = function(icon_path) 
 	local widget = wibox.widget{
 		{
-			{
-				image = icon_path,
-				resize = true,
-				forced_width = dpi(12),
-				forced_height = dpi(12),
-				widget = wibox.widget.imagebox	
-			},
-			margins = dpi(2),
-			widget = wibox.container.margin
+			image = icon_path,
+			resize = true,
+			forced_width = dpi(16),
+			forced_height = dpi(16),
+			widget = wibox.widget.imagebox	
 		},
-		bg = beautiful.bg_button,
-		border_width = beautiful.btn_border_width,
-		shape = beautiful.btn_xs_shape,
-		border_color = beautiful.border_button,
-		widget = wibox.container.background
+		margins = dpi(2),
+		widget = wibox.container.margin
 	}
 	
 	local old_cursor, old_wibox
@@ -166,28 +159,5 @@ local calendar_widget = wibox.widget {
 		widget = wibox.container.margin
 	}
 }
--- Old style calender, keeping because if I want to use that sometimes
---local calendar_widget = wibox.widget {
-	--{
-		--nil,
-		--button_previous,
-		--nil,
-        --expand = "none", 
-		--layout = wibox.layout.align.vertical
-	--},
-	--{
-		--calendar,
-		--margins = dpi(6),
-		--widget = wibox.container.margin
-	--},
-	--{
-		--nil,
-		--button_next,
-		--nil,
-        --expand = "none", 
-		--layout = wibox.layout.align.vertical
-	--},
-	--layout = wibox.layout.align.horizontal
---}
 
 return calendar_widget

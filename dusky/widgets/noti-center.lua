@@ -5,7 +5,6 @@ local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
 local clickable_container = require("widgets.clickable-container")
-local btn_bg_container = require("widgets.button-active-container")
 
 local clear_all_button = wibox.widget{
 	{
@@ -154,7 +153,7 @@ local create_notifbox =  function (n)
 				margins = dpi(1),
 				widget = wibox.container.margin
 			},
-			bg = beautiful.bg_button,
+			bg = beautiful.bg_normal,
 			border_width = beautiful.btn_border_width,
 			border_color = beautiful.border_button,
 			shape = gears.shape.circle,
@@ -303,7 +302,7 @@ local create_notifbox =  function (n)
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_inner_widget,
-		shape = beautiful.notification_shape,
+		shape = beautiful.widget_shape,
 		widget = wibox.container.background
 	}
 

@@ -199,7 +199,6 @@ control_popup:setup({
 	widget = wibox.container.background,
 	bg = beautiful.bg_normal,
 	forced_height = popup_height,
-	forced_width = dpi(340),
 	{
 		rows,
 		widget = wibox.container.margin,

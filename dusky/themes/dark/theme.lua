@@ -13,37 +13,38 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
-theme.bg_normal     = "#252526"
-theme.bg_focus      = "#0A7ACA"
+theme.bg_normal     = "#252229"
+theme.bg_normal_alt = "#767676"
+theme.bg_focus      = "#3782e5"
 theme.bg_urgent     = "#F44747"
-theme.bg_minimize   = "#303030"
+theme.bg_minimize   = "#2c2935"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#ffffff"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#d9d8dd"
+theme.fg_focus      = "#d9d8dd"
+theme.fg_urgent     = "#d9d8dd"
+theme.fg_minimize   = "#d9d8dd"
 
 -- button colors
-theme.bg_button = "#3f3f3f"
+theme.bg_button = "#3a3745"
 theme.bg_panel_button = theme.bg_normal
 theme.bg_panel_button_active = theme.bg_button
-theme.border_button = "#51514f"
+theme.border_button = "#3a3745"
 theme.border_panel_button = theme.bg_normal
 theme.border_panel_button_active = theme.border_button
-theme.button_active = "#0A7ACA"
+theme.button_active = "#3782e5"
 theme.button_active_alt = "#2ea043"
-theme.bg_inner_widget = "#303030"
-theme.bg_tasklist_active = "#0A7ACA33"
-theme.bg_tasklist_inactive = "#303030"
+theme.bg_inner_widget = "#3A3845"
+theme.bg_tasklist_active = theme.bg_focus .. "33"
+theme.bg_tasklist_inactive = "#3e3846"
 theme.useless_gap   = dpi(1)
 theme.gap_single_client = true
 theme.maximized_hide_border = true
 theme.border_width  = dpi(1)
 theme.button_panel_border_width = dpi(0)
 theme.button_panel_border_width_active = dpi(1)
-theme.border_normal = "#3d3d3d"
-theme.border_focus  = "#0A7ACA"
+theme.border_normal = "#2c2733"
+theme.border_focus  = "#3782e5"
 theme.border_marked = "#F44747"
 theme.bg_yellow = "#f36351"
 -- Margins and paddings and border width
@@ -51,7 +52,7 @@ theme.notification_margin = dpi(6)
 theme.widget_margin = dpi(6)
 theme.btn_xs_margin = dpi(3)
 theme.btn_md_margin = dpi(5)
-theme.btn_border_width = dpi(1)
+theme.btn_border_width = dpi(0)
 theme.widget_border_width = dpi(1)
 theme.widget_margin = dpi(6)
 theme.is_enable_titlebar = false
@@ -70,7 +71,7 @@ theme.btn_rounded = function (cr, height, width)
 end
 
 theme.widget_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 6)
+    gears.shape.rounded_rect(cr, height, width, 10)
 end
 
 theme.panel_button_shape = function (cr, height, width)
@@ -78,7 +79,7 @@ theme.panel_button_shape = function (cr, height, width)
 end
 
 theme.panel_button_shape_active = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 4)
+    gears.shape.rounded_rect(cr, height, width, 20)
 end
 -- Icons
 theme.icon_times = themes_path .. "icons/remove.svg"
@@ -159,7 +160,7 @@ theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = theme.button_panel_border_width
 theme.tasklist_shape_border_color = theme.border_panel_button
 theme.tasklist_bg_focus = theme.bg_focus
-theme.tasklist_bg_normal = theme.border_button
+theme.tasklist_bg_normal = "#575060"
 
 
 -- Snap area
@@ -175,7 +176,9 @@ theme.snapper_gap = dpi(3)
 theme.notification_font = theme.font
 theme.notification_bg = theme.bg_normal
 theme.notification_fg = theme.fg_normal
-theme.notification_shape = theme.widget_shape
+theme.notification_shape = function (cr, height, width)
+    gears.shape.rounded_rect(cr, height, width, 6)
+end
 theme.notification_width = dpi(265)
 theme.notification_max_width = dpi(265)
 theme.notification_icon_size = 64

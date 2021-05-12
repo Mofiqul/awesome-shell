@@ -9,12 +9,9 @@ local btn_bg_container = require("widgets.button-active-container")
 local create_clock = function()
 
 	local clock_format = nil
-	clock_format = '<span font="Ubuntu 12">%I:%M:%S %p</span>'
+	clock_format = '<span font="Ubuntu 12">%I:%M %p</span>'
 
-	local clock_widget = wibox.widget.textclock(
-		clock_format,
-		1
-	)
+	local clock_widget = wibox.widget.textclock(clock_format, 60)
 
 	clock_widget = wibox.widget {
 		{	{
@@ -42,25 +39,70 @@ local create_clock = function()
 	}
 
 
+	local s =  awful.screen.focused()
+	local popup_height = s.geometry.height - beautiful.wibar_height
+	local time_format = "<span font='Ubuntu light 36'> %I:%M </span> "
+	local date_formate = "<span font='Ubuntu bold 12'> %A, %B, %d </span>"
+	local time = wibox.container.place(wibox.widget.textclock(time_format, 60))
+	local date = wibox.container.place(wibox.widget.textclock(date_formate, 60))
+	
+	local date_time = wibox.widget{
+		{
+			time,
+			date,
+			layout = wibox.layout.fixed.vertical
+		},
+		margins = dpi(20),
+		widget = wibox.container.margin
+	}
 	local calendar = awful.popup{
 		ontop = true,
 		visible = false,
 		bg = "#00000000",
 		placement = function (w)
 			awful.placement.bottom_right(w, {
-				margins = {left = 0, top = 0, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}
+				margins = {left = 0, top = 0, bottom = beautiful.wibar_height, right = dpi(0)}
 			})
 		end,
 		widget = {
 			{
-				require("widgets.calender"),
-				margins = beautiful.widget_margin,
+				{
+					date_time,
+					{
+						{
+							require("widgets.calender"),
+							margins = dpi(16),
+							widget = wibox.container.margin
+						},
+						bg = beautiful.bg_inner_widget,
+						shape = beautiful.widget_shape,
+						widget = wibox.container.background
+					},
+					{
+						top = dpi(20),
+						widget = wibox.container.margin
+					},
+					{
+						{
+							require("widgets.weather"),
+							margins = dpi(16),
+							widget = wibox.container.margin
+						},
+						bg = beautiful.bg_inner_widget,
+						shape = beautiful.widget_shape,
+						widget = wibox.container.background
+					},
+
+					layout = wibox.layout.fixed.vertical
+				},
+				top = dpi(30),
+				bottom = dpi(30),
+				left = dpi(25),
+				right = dpi(25),
 				widget = wibox.container.margin,
 			},
-			border_width = beautiful.widget_border_width,
-			border_color = beautiful.border_normal,
 			bg = beautiful.bg_normal,
-			shape = beautiful.widget_shape,
+			forced_height = popup_height,
 			widget = wibox.container.background
 		}
 	}
