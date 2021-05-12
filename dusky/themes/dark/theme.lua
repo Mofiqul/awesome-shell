@@ -8,6 +8,7 @@ local theme = {}
 theme.font = "Ubuntu 10"
 theme.font_bold = "Ubuntu 10"
 theme.font_large = "Ubuntu 12"
+theme.font_large_bold = "Ubuntu bold 12"
 theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 

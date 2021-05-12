@@ -11,20 +11,18 @@ function create_button.small(icon_path)
 		id = "icon",
 		image = icon_path,
 		resize = true,
-		forced_width = dpi(16),
-		forced_height = dpi(16),
+		forced_width = dpi(22),
+		forced_height = dpi(22),
 		widget = wibox.widget.imagebox
 	}
 
 	local button = wibox.widget {
 		{
 			button_image,
-			margins = dpi(6),
+			margins = dpi(10),
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_button,
-		forced_width = dpi(36),
-		forced_height = dpi(36),
 		shape = gears.shape.circle,
 		shape_border_color = beautiful.border_button,
 		shape_border_width = dpi(1),
@@ -57,8 +55,8 @@ function create_button.circle_big(icon_path)
 		id = "icon",
 		image = icon_path,
 		resize = true,
-		forced_width = dpi(16),
-		forced_height = dpi(16),
+		forced_width = dpi(18),
+		forced_height = dpi(18),
 		widget = wibox.widget.imagebox
 	}
 
@@ -70,7 +68,7 @@ function create_button.circle_big(icon_path)
 						button_image,
 						widget = wibox.container.place
 					},
-					margins = dpi(10),
+					margins = dpi(12),
 					widget = wibox.container.margin
 				},
 				id = "background",

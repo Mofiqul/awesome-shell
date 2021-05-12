@@ -397,7 +397,8 @@ btn_close:connect_signal("button::press", function (_, _, _, button)
 end)
 
 local screen_shot_button = create_button.circle_big(beautiful.icon_camera)
-
+local label = screen_shot_button:get_children_by_id("label")[1]
+label:set_text("Take Shot")
 screen_shot_button:connect_signal("button::press", function (self, _, _, button)
 	if button == 1 then
 		display_popup()

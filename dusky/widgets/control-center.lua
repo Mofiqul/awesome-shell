@@ -98,7 +98,7 @@ local session_widget = function ()
 
 	local widget_username = wibox.widget{
 		text = 'Devops',
-		font = "Ubuntu Bold 12",
+		font = beautiful.font_large_bold,
 		valign = "center",
 		widget = wibox.widget.textbox
 	}
@@ -114,8 +114,8 @@ local session_widget = function ()
 				{
 					image = beautiful.face_image,
 					resize = true,
-					forced_width = dpi(36),
-					forced_height = dpi(36),
+					forced_width = dpi(42),
+					forced_height = dpi(42),
 					widget = wibox.widget.imagebox
 				},
 				widget_username,
