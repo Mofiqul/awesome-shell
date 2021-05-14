@@ -2,7 +2,7 @@
 
 This is a collection of [awesome wm](https://awesomewm.org/) configuration files
 
-![Screen shot](./screen-shots/1.png)
+![Screen shot](./screen-shots/front.png)
 
 ## Requirements
 0. Any linux distribution. (Please change the software update notification as your package manager)
