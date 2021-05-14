@@ -71,7 +71,7 @@ local create_clock = function()
 					{
 						{
 							require("widgets.calender"),
-							margins = dpi(16),
+							margins = {top = 8, left = 16, bottom = 16, right = 16},
 							widget = wibox.container.margin
 						},
 						bg = beautiful.bg_inner_widget,

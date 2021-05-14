@@ -1,5 +1,6 @@
 local awful = require("awful")
 local filesystem = require("gears.filesystem")
+local beautiful = require("beautiful")
 local naughty = require("naughty")
 local config_dir = filesystem.get_configuration_dir()
 local default_apps = require("configurations.default-apps")
@@ -10,6 +11,7 @@ local startup_apps = {
 	"xidlehook --not-when-fullscreen --not-when-audio  --timer 300 'xbacklight -set 1' 'xbacklight -set 50' --timer 60 'xbacklight -set 50;" ..default_apps.lock_screen .." ' '' --timer 900 'systemctl suspend'  ''",
 	"$HOME/.local/bin/xinput-tab",
 	"xsettingsd"
+    -- Add your startup programs here
 }
 
 
@@ -27,10 +29,11 @@ local spawn_once = function (cmd)
             end
             naughty.notification({
                 app_name = 'Startup Applications',
+				image = beautiful.icon_noti_error,
                 title = "Error starting application",
                 message = "Error while starting " .. cmd,
                 timeout = 10,
-                icon = config_dir .. "themes/codedark/icons/error.svg",
+                icon = beautiful.icon_noti_error,
             })
         end
     )

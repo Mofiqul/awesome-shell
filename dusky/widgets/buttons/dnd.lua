@@ -8,10 +8,10 @@ local initial_action = function(button)
 	local label = button:get_children_by_id("label")[1]
 
 	if naughty.suspended then
-		background:set_bg(beautiful.button_active)
+		background:set_bg(beautiful.bg_button)
 		label:set_text("Off")
 	else
-		background:set_bg(beautiful.bg_button)
+		background:set_bg(beautiful.button_active)
 		label:set_text("On")
 	end
 end

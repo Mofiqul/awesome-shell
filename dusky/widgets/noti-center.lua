@@ -109,33 +109,22 @@ local create_notifbox =  function (n)
 		--clip_shape = gears.shape.circle,
 		vertical_fit_policy = "filt",
 		horizontal_fit_policy = "filt",
+		max_scaling_factor = 2,
 		widget = wibox.widget.imagebox
 	}
 
 	local app_icon = function ()
-		local widget = {}
-
-		if not n.app_icon == nil  or not n.app_icon == '' then
+		local widget = nil
+		if n.app_icon ~= nil then
 			widget = wibox.widget{
 				image = n.app_icon,
 				resize = true,
 				forced_height = dpi(16),
+				clip_shape = gears.shape.circle,
 				forced_width = dpi(16),
 				widget = wibox.widget.imagebox
 			}
-		elseif not n.image == nil or not n.image == '' then
-			widget = wibox.widget{
-				image = n.image,
-				resize = true,
-				forced_height = dpi(16),
-				forced_width = dpi(16),
-				widget = wibox.widget.imagebox
-			}
-
-		else
-			widget = nil
 		end
-
 		return widget
 	end
 

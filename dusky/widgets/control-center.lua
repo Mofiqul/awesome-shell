@@ -15,9 +15,9 @@ local control_widget = wibox.widget{
 			{
 				{
 					{
+						network_indicator,
 						volume_widget(),
 						battery_widget(),
-						network_indicator,
 						spacing = dpi(4),
 						layout = wibox.layout.fixed.horizontal
 					},
@@ -44,7 +44,7 @@ local button_row_1= wibox.widget{
 	require("widgets.buttons.dnd"),
 	require("widgets.buttons.redshift"),
 	require("widgets.buttons.airplane"),
-	require("widgets.buttons.theme-switcher"),
+	require("widgets.buttons.battery"),
 	spacing = beautiful.widget_margin,
 	layout = wibox.layout.fixed.horizontal
 }
@@ -62,24 +62,19 @@ local button_row_2 = wibox.widget{
 local control_buttons = wibox.widget{
 	{
 		{
-			{
-				button_row_1,
-				widget = wibox.container.place
-			},
-			{
-				button_row_2,
-				widget = wibox.container.place
-			},
-			spacing = beautiful.widget_margin * 2 ,
-			layout = wibox.layout.fixed.vertical
+			button_row_1,
+			widget = wibox.container.place
 		},
-		top = dpi(15),
-		bottom = dpi(15),
-		widget = wibox.container.margin
+		{
+			button_row_2,
+			widget = wibox.container.place
+		},
+		spacing = beautiful.widget_margin * 2 ,
+		layout = wibox.layout.fixed.vertical
 	},
-	bg = beautiful.bg_normal,
-	shape = beautiful.widget_shape,
-	widget = wibox.container.background
+	top = dpi(15),
+	bottom = dpi(15),
+	widget = wibox.container.margin
 }
 
 -- power button
@@ -129,8 +124,8 @@ local session_widget = function ()
 			},
 			layout = wibox.layout.align.horizontal
 		},
-		left = dpi(15),
-		right = dpi(15),
+		left = dpi(8),
+		right = dpi(8),
 		bottom = dpi(15),
 		widget = wibox.container.margin
 	}
@@ -202,7 +197,7 @@ control_popup:setup({
 	{
 		rows,
 		widget = wibox.container.margin,
-		top = dpi(30),
+		top = dpi(50),
 		bottom = dpi(30),
 		left = dpi(25),
 		right = dpi(25)

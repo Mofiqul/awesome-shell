@@ -215,7 +215,7 @@ local row_bottom = wibox.widget{
 	bg = beautiful.bg_inner_widget,
 	border_width = beautiful.widget_border_width,
 	border_color = beautiful.border_normal,
-	shape = beautiful.widget_shape,
+	shape = beautiful.widget_shape_alt,
 	{
 		{	{
 				text = "Delay in Seconds",
@@ -248,7 +248,7 @@ local container = wibox.widget{
 local maim_popup = awful.popup{
 	widget = {
 		widget = wibox.container.background,
-		shape = beautiful.widget_shape,
+		shape = beautiful.widget_shape_alt,
 		border_width = beautiful.widget_border_width,
 		border_color = beautiful.border_normal,
 		bg = beautiful.bg_normal,

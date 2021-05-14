@@ -161,10 +161,7 @@ local weather_widget = wibox.widget{
 	layout = wibox.layout.fixed.vertical
 }
 
-local coordinates = {
-	"26.1862",
-	"91.751"
-}
+local coordinates = settings.openweathermap_coordinates
 
 local api_key = settings.openweathermap_api_key
 local show_hourly_forecast = true
@@ -178,7 +175,7 @@ local url =
             (show_hourly_forecast == false and ',hourly' or '') ..
             (show_daily_forecast == false and ',daily' or ''))
 
-awful.widget.watch(string.format(GET_FORECAST_CMD, url), 120, function (_,stdout, stderr)
+awful.widget.watch(string.format(GET_FORECAST_CMD, url), 300, function (_,stdout, stderr)
 	if stderr == '' then
 		local result = json.decode(stdout)
 		-- Current weather setup

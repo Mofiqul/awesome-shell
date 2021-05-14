@@ -46,4 +46,5 @@ i3lock \
 --timesize=75 \
 --datesize=30 \
 --verifsize=20 \
---wrongsize=20
+--wrongsize=20 \
+--image $1

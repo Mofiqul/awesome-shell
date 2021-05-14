@@ -51,21 +51,19 @@ end
 --- @param icon_path string
 function create_button.circle_big(icon_path)
 
-	local button_image = wibox.widget {
-		id = "icon",
-		image = icon_path,
-		resize = true,
-		forced_width = dpi(18),
-		forced_height = dpi(18),
-		widget = wibox.widget.imagebox
-	}
-
 	local button_with_label = wibox.widget{
 		{
 			{
 				{
 					{
-						button_image,
+						{
+							id = "icon",
+							image = icon_path,
+							resize = true,
+							forced_width = dpi(18),
+							forced_height = dpi(18),
+							widget = wibox.widget.imagebox
+						},
 						widget = wibox.container.place
 					},
 					margins = dpi(12),

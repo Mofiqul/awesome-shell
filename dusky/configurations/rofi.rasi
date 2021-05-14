@@ -10,12 +10,12 @@ configuration {
 }
 
 * {
-    background:                     #25222999;
+    background:                     #252526;
     background-alt:                 #00000000;
-    background-bar:                 #3a3845;
-	border:                         #252229;
-    foreground:                     #d9d9dd;
-    accent:			            	#3a3845;
+    background-bar:                 #303030;
+	border:                         #3d3d3d;
+    foreground:                     #ffffff;
+    accent:			            	#51514f;
 }
 
 window {
