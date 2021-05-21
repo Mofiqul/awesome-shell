@@ -126,7 +126,7 @@ local session_widget = function ()
 		},
 		left = dpi(8),
 		right = dpi(8),
-		bottom = dpi(15),
+		bottom = dpi(10),
 		widget = wibox.container.margin
 	}
 
@@ -149,7 +149,7 @@ end
 
 local slider_contols = wibox.widget{
 	layout = wibox.layout.fixed.vertical,
-	spacing = dpi(15),
+	spacing = dpi(10),
 	require("widgets.volume-slider")(),
 	require("widgets.brightness-slider")(),
 }
@@ -176,7 +176,7 @@ local notification_center = wibox.widget{
 table.insert(rows, notification_center)
 
 local s =  awful.screen.focused()
-local popup_height = s.geometry.height - beautiful.wibar_height
+local popup_height = s.geometry.height - (beautiful.wibar_height + dpi(10))
 
 local control_popup = awful.popup{
 	widget = {},
@@ -185,7 +185,7 @@ local control_popup = awful.popup{
     visible = false,
 	placement = function (w)
 		awful.placement.bottom_right(w, {
-			margins = {left = 0, top = 0, bottom = beautiful.wibar_height, right = dpi(0)}
+			margins = {left = 0, top = 5, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}
 		})
 	end
 }
@@ -193,11 +193,12 @@ local control_popup = awful.popup{
 control_popup:setup({
 	widget = wibox.container.background,
 	bg = beautiful.bg_normal,
+	shape = beautiful.widget_shape,
 	forced_height = popup_height,
 	{
 		rows,
 		widget = wibox.container.margin,
-		top = dpi(50),
+		top = dpi(40),
 		bottom = dpi(30),
 		left = dpi(25),
 		right = dpi(25)

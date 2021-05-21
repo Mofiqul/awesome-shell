@@ -19,13 +19,11 @@ function create_button.small(icon_path)
 	local button = wibox.widget {
 		{
 			button_image,
-			margins = dpi(10),
+			margins = dpi(8),
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_button,
 		shape = gears.shape.circle,
-		shape_border_color = beautiful.border_button,
-		shape_border_width = dpi(1),
         widget = wibox.container.background
 	}
 
@@ -66,14 +64,12 @@ function create_button.circle_big(icon_path)
 						},
 						widget = wibox.container.place
 					},
-					margins = dpi(12),
+					margins = dpi(10),
 					widget = wibox.container.margin
 				},
 				id = "background",
 				bg = beautiful.bg_button,
 				shape = gears.shape.circle,
-				shape_border_color = beautiful.border_button,
-				shape_border_width = dpi(1),
 				widget = wibox.container.background
 			},
 			{
@@ -126,9 +122,7 @@ function create_button.button_with_label(name, icon)
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_button,
-		border_width = beautiful.btn_border_width,
-		border_color = beautiful.border_button,
-		shape = beautiful.btn_xs_shape,
+		shape = beautiful.widget_shape,
 		widget = wibox.container.background,
 		forced_width = dpi(95)
 	}

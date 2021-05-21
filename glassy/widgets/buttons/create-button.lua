@@ -22,11 +22,11 @@ function create_button.small(icon_path)
 			margins = dpi(6),
 			widget = wibox.container.margin
 		},
-		bg = beautiful.bg_button,
+		bg = beautiful.bg_toggle_button,
 		forced_width = dpi(36),
 		forced_height = dpi(36),
 		shape = gears.shape.circle,
-		shape_border_color = beautiful.border_button,
+		shape_border_color = beautiful.border_toggle_button,
 		shape_border_width = dpi(1),
         widget = wibox.container.background
 	}
@@ -69,9 +69,9 @@ function create_button.circle_big(icon_path, initial_action, onclick_action)
 			margins = dpi(15),
 			widget = wibox.container.margin
 		},
-		bg = beautiful.bg_button,
+		bg = beautiful.bg_toggle_button,
 		shape = gears.shape.circle,
-		shape_border_color = beautiful.border_button,
+		shape_border_color = beautiful.border_toggle_button,
 		shape_border_width = dpi(1),
         widget = wibox.container.background
 	}

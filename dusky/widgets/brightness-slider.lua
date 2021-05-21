@@ -9,23 +9,32 @@ local brightness_slider =  function()
 
 	-- icon
 	local widget_icon = wibox.widget{
-		id = "icon",
-		image = beautiful.brightness_icon,
-		resize = true,
-		forced_height = dpi(18),
-		forced_width = dpi(18),
-		widget = wibox.widget.imagebox
+		{
+			{
+				id = "icon",
+				image = beautiful.brightness_icon,
+				resize = true,
+				forced_height = dpi(16),
+				forced_width = dpi(16),
+				widget = wibox.widget.imagebox
+			},
+			margins = dpi(4),
+			widget = wibox.container.margin
+		},
+		bg = beautiful.bg_button,
+		shape = gears.shape.circle,
+		widget = wibox.container.background
 	}
 	-- slider var
 	local widget_slider = wibox.widget {
 		bar_shape = gears.shape.rounded_rect,
-		bar_height = dpi(6),
-		bar_color = beautiful.fg_normal,
+		bar_height = dpi(3),
+		bar_color = beautiful.bg_focus .. "55",
 		bar_active_color = beautiful.bg_focus,
 
 		handle_shape = gears.shape.circle,
-		handle_width = dpi(16),
-		handle_color = beautiful.fg_normal,
+		handle_width = dpi(12),
+		handle_color = beautiful.bg_focus,
 
 		value = 40,
 		minimum = 0,

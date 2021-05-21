@@ -44,32 +44,17 @@ local tasklist = function (s)
 			{
 				{
 					{
-						widget = wibox.container.background,
 						id = "background_role",
-						forced_height = dpi(2)
+						forced_height = dpi(2),
+						widget = wibox.container.background
 					},
 					{
-						{
-							awful.widget.clienticon,
-							left = dpi(4),
-							widget = wibox.container.margin
-						},
-						{
-							{
-								{
-									id     = 'text_role',
-									widget = wibox.widget.textbox
-								},
-								right = dpi(4),
-								top = dpi(-2),
-								widget = wibox.container.margin
-							},
-							widget = wibox.container.place
-						},
-						spacing = dpi(4),
-						layout = wibox.layout.fixed.horizontal
+						awful.widget.clienticon,
+						left = dpi(4),
+						right = dpi(4),
+						widget = wibox.container.margin
 					},
-					widget = wibox.layout.align.vertical,
+					widget = wibox.layout.fixed.vertical,
 				},
 				widget = wibox.container.background,
 				id = "background"

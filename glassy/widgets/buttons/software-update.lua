@@ -44,7 +44,7 @@ awful.widget.watch(
 				notification_sent = 1
 			end
 		else
-			software_update:set_bg(beautiful.bg_button)
+			software_update:set_bg(beautiful.bg_toggle_button)
 		end
 	end
 )

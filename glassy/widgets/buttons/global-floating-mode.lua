@@ -8,7 +8,7 @@ local update_global_floating_mode = function (button)
 	if global_floating_enabled then
 		button:set_bg(beautiful.button_active)
 	else
-		button:set_bg(beautiful.bg_button)
+		button:set_bg(beautiful.bg_toggle_button)
 	end
 end
 

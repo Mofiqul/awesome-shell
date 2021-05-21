@@ -25,7 +25,9 @@ theme.fg_minimize   = "#ffffff"
 
 -- button colors
 theme.bg_button = "#ffffff11"
+theme.bg_toggle_button = "#ffffff22"
 theme.border_button = "#ffffff22"
+theme.border_toggle_button = "#ffffff33"
 theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#608b4e"
 
@@ -131,7 +133,7 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
-theme.taglist_bg_focus = theme.bg_inner_widget
+theme.taglist_bg_focus = theme.bg_toggle_button
 theme.taglist_spacing = 2
 
 
@@ -139,7 +141,7 @@ theme.taglist_spacing = 2
 theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = dpi(1)
 theme.tasklist_shape_border_color = theme.border_button
-theme.tasklist_bg_focus = theme.bg_inner_widget
+theme.tasklist_bg_focus = theme.bg_toggle_button
 theme.tasklist_bg_normal = theme.bg_transparent
 
 
@@ -202,6 +204,8 @@ theme.titlebar_maximized_button_normal_active = themes_path.."/titlebar/go-up.sv
 theme.titlebar_maximized_button_focus_active  = themes_path.."/titlebar/go-up.svg"
 theme.titlebar_bg_focus = theme.bg_normal
 
+theme.titlebar_bg_normal = "#2b2b2b"
+theme.titlebar_bg_focus = "#2b2b2b"
 
 theme.wallpaper = themes_path.."/background.png"
 

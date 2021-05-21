@@ -13,6 +13,7 @@ theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
 
 
+theme.bg_transparent = "#00000000"
 theme.bg_normal     = "#252526"
 theme.bg_normal_alt = "#767676"
 theme.bg_focus      = "#0A7ACA"
@@ -26,15 +27,15 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 -- button colors
-theme.bg_button = "#3f3f3f"
-theme.bg_panel_button = theme.bg_normal
+theme.bg_button = "#424242"
+theme.bg_panel_button = theme.bg_transparent
 theme.bg_panel_button_active = theme.bg_button
-theme.border_button = "#51514f"
+theme.border_button = theme.bg_button -- "#51514f"
 theme.border_panel_button = theme.bg_normal
 theme.border_panel_button_active = theme.border_button
 theme.button_active = "#0A7ACA"
 theme.button_active_alt = "#2ea043"
-theme.bg_inner_widget = "#303030"
+theme.bg_inner_widget = "#323232"
 theme.bg_tasklist_active = "#0A7ACA33"
 theme.bg_tasklist_inactive = "#303030"
 theme.useless_gap   = dpi(1)
@@ -55,7 +56,6 @@ theme.btn_md_margin = dpi(5)
 theme.btn_border_width = dpi(1)
 theme.widget_border_width = dpi(1)
 theme.widget_margin = dpi(6)
-theme.is_enable_titlebar = false
 -- shapes
 theme.btn_xs_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 4)
@@ -66,9 +66,7 @@ end
 -- end
 theme.btn_lg_shape = gears.shape.circle
 
-theme.btn_rounded = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 20)
-end
+theme.btn_rounded = gears.shape.rounded_bar
 
 theme.widget_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 12)
@@ -82,9 +80,7 @@ theme.panel_button_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 0)
 end
 
-theme.panel_button_shape_active = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 20)
-end
+theme.panel_button_shape_active = gears.shape.rounded_bar
 -- Icons
 theme.icon_times = themes_path .. "icons/remove.svg"
 -- awesome icon 
@@ -198,7 +194,7 @@ theme.bg_systray = theme.bg_normal
 
 -- Menu
 theme.menu_submenu_icon = themes_path.."/submenu.png"
-theme.menu_height = dpi(24)
+theme.menu_height = dpi(26)
 theme.menu_width  = dpi(200)
 
 -- Wibar
@@ -219,6 +215,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."/titlebar/go-up.
 theme.titlebar_maximized_button_normal_active = themes_path.."/titlebar/go-up.svg"
 theme.titlebar_maximized_button_focus_active  = themes_path.."/titlebar/go-up.svg"
 theme.titlebar_bg_focus = theme.bg_normal
+theme.titlebar_bg_normal = theme.bg_normal
 
 
 theme.wallpaper = themes_path.."/background.png"

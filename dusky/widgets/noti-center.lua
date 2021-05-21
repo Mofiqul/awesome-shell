@@ -144,7 +144,7 @@ local create_notifbox =  function (n)
 			},
 			bg = beautiful.bg_normal,
 			border_width = beautiful.btn_border_width,
-			border_color = beautiful.border_button,
+			border_color = beautiful.bg_normal,
 			shape = gears.shape.circle,
 			widget = wibox.container.background
 		},
@@ -238,9 +238,7 @@ local create_notifbox =  function (n)
 				bg = beautiful.bg_button,
 				border_width = beautiful.btn_border_width,
 				border_color = beautiful.border_button,
-				shape = function (cr, height, width)
-					gears.shape.rounded_rect(cr, height, width, 14)
-				end,
+				shape = gears.shape.rounded_bar,
 				widget = wibox.container.background,
 			},
 			widget  = clickable_container,

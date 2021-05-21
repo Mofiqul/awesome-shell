@@ -192,6 +192,7 @@ local create_exit_screen = function(s)
 		minimum_width = s.geometry.width,
 		minimum_height = s.geometry.height,
 		placement = awful.placement.center,
+		bg = beautiful.bg_normal,
 		x = s.geometry.x,
 		y = s.geometry.y
 	}
@@ -264,15 +265,15 @@ local create_exit_screen = function(s)
 
 
 	-- Creating a blured version of wallpaper if not exits for exit screen background
-	local wallpaper = config_dir .. "/themes/dark/background.png"
-	local wallpaper_blur = config_dir .. "/themes/dark/background-blur.png"
-	if not gears.filesystem.file_readable(wallpaper_blur) then
-		awful.spawn.easy_async_with_shell("convert ".. wallpaper .." -blur 0x16 " .. wallpaper_blur, function ()
-			s.exit_screen.bgimage = wallpaper_blur
-		end)
-	else
-		s.exit_screen.bgimage = wallpaper_blur
-	end
+	-- local wallpaper = config_dir .. "/themes/dark/background.png"
+	-- local wallpaper_blur = config_dir .. "/themes/dark/background-blur.png"
+	-- if not gears.filesystem.file_readable(wallpaper_blur) then
+	-- 	awful.spawn.easy_async_with_shell("convert ".. wallpaper .." -blur 0x16 " .. wallpaper_blur, function ()
+	-- 		s.exit_screen.bgimage = wallpaper_blur
+	-- 	end)
+	-- else
+	-- 	s.exit_screen.bgimage = wallpaper_blur
+	-- end
 
 	s.exit_screen:buttons(
 		gears.table.join(

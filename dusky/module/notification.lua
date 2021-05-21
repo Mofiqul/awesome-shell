@@ -136,9 +136,7 @@ naughty.connect_signal("request::display", function (n)
 				bg = beautiful.bg_button,
 				border_width = beautiful.btn_border_width,
 				border_color = beautiful.border_button,
-				shape = function (cr, height, width)
-					gears.shape.rounded_rect(cr, height, width, 14)
-				end,
+				shape = gears.shape.rounded_bar,
 				widget = wibox.container.background,
 			},
 			widget  = clickable_container,
@@ -182,10 +180,8 @@ naughty.connect_signal("request::display", function (n)
 					margins = beautiful.notification_margin,
 					widget = wibox.container.margin
 				},
-				border_width = beautiful.widget_border_width,
-				border_color = beautiful.border_normal,
 				bg = beautiful.bg_normal,
-				shape = beautiful.notification_shape,
+				shape = beautiful.widget_shape,
 				widget = wibox.container.background
 			},
 			strategy = "max",

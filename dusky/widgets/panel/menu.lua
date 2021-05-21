@@ -14,7 +14,7 @@ local widget_menu = wibox.widget{
 					resize = true,
 					widget = wibox.widget.imagebox
 				},
-				left = dpi(2),
+				left = dpi(6),
 				right = dpi(2),
 				top = dpi(2),
 				bottom = dpi(2),

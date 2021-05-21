@@ -54,7 +54,7 @@ local button_capture = wibox.widget{
 		bg = beautiful.bg_focus,
 		border_width = beautiful.border_width,
 		border_color = beautiful.bg_focus,
-		shape = beautiful.btn_xs_shape,
+		shape = beautiful.btn_rounded,
 		{
 			widget = wibox.container.margin,
 			left = dpi(10),
@@ -77,7 +77,7 @@ local button_video_capture = wibox.widget{
 		bg = beautiful.bg_urgent,
 		border_width = beautiful.border_width,
 		border_color = beautiful.bg_urgent,
-		shape = beautiful.btn_xs_shape,
+		shape = beautiful.btn_rounded,
 		{
 			widget = wibox.container.margin,
 			left = dpi(10),
@@ -128,13 +128,13 @@ local btn_delay_num = function ()
 			bg = beautiful.bg_button,
 			border_width = beautiful.border_width,
 			border_color = beautiful.border_button,
-			shape = beautiful.btn_xs_shape,
+			shape = beautiful.btn_rounded,
 			{
 				widget = wibox.container.margin,
-				left = dpi(6),
-				right = dpi(6),
-				top = dpi(4),
-				bottom = dpi(4),
+				left = dpi(8),
+				right = dpi(8),
+				top = dpi(5),
+				bottom = dpi(5),
 				{
 					btn_minus,
 					value_text,
@@ -213,9 +213,7 @@ local row_middle = wibox.widget{
 local row_bottom = wibox.widget{
 	widget = wibox.container.background,
 	bg = beautiful.bg_inner_widget,
-	border_width = beautiful.widget_border_width,
-	border_color = beautiful.border_normal,
-	shape = beautiful.widget_shape_alt,
+	shape = beautiful.widget_shape,
 	{
 		{	{
 				text = "Delay in Seconds",
@@ -248,9 +246,7 @@ local container = wibox.widget{
 local maim_popup = awful.popup{
 	widget = {
 		widget = wibox.container.background,
-		shape = beautiful.widget_shape_alt,
-		border_width = beautiful.widget_border_width,
-		border_color = beautiful.border_normal,
+		shape = beautiful.widget_shape,
 		bg = beautiful.bg_normal,
 		container
 	},

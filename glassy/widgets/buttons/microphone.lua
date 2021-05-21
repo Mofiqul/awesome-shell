@@ -11,7 +11,7 @@ local initial_action = function (button)
 			if stdout:match('on') then
 				button:set_bg(beautiful.button_active)
 			else
-				button:set_bg(beautiful.bg_button)
+				button:set_bg(beautiful.bg_toggle_button)
 			end
 	end)
 end

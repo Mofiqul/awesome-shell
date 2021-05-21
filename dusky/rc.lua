@@ -53,10 +53,7 @@ awful.layout.layouts = {
     awful.layout.suit.max,
 }
 
-
--- Wibar
--- Create a wibox for each screen and add it
-
+-- Set wallpaper
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -75,33 +72,42 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
-
-
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
-
-
+	
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = beautiful.wibar_position, screen = s, height = beautiful.wibar_height })
+    s.mywibox = awful.wibar({ 
+		position = beautiful.wibar_position, 
+		screen = s, 
+		height = beautiful.wibar_height,
+		bg = "#00000000"
+	})
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            require("widgets.panel.menu"),
-            require("widgets.panel.taglist")(s),
-            s.mypromptbox,
-        },
-        require("widgets.panel.tasklist")(s), -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            require("widgets.panel.systray-no-toggle"),
-            require("widgets.panel.layoutbox")(s),
-			require("widgets.clock")(),
-		--	require("widgets.noti-center"),
-			require("widgets.control-center"),
-        },
+		{
+			layout = wibox.layout.align.horizontal,
+			{ -- Left widgets
+				layout = wibox.layout.fixed.horizontal,
+				require("widgets.panel.menu"),
+				require("widgets.panel.taglist")(s),
+				s.mypromptbox,
+			},
+			require("widgets.panel.tasklist")(s), -- Middle widget
+			{ -- Right widgets
+				layout = wibox.layout.fixed.horizontal,
+				require("widgets.panel.systray-no-toggle"),
+				require("widgets.panel.layoutbox")(s),
+				require("widgets.clock")(),
+			--	require("widgets.noti-center"),
+				require("widgets.control-center"),
+			},
+		},
+		bg = beautiful.bg_normal,
+		-- shape = function (cr, width, height)
+		-- 	gears.shape.partially_rounded_rect( cr, width, height, true, true, false, false, 50)
+		-- end,
+		widget = wibox.container.background
     }
 end)
 
@@ -209,8 +215,8 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 
 -- Rules
-require("configurations.rules")
 require("module.signals")
+require("configurations.rules")
 require("widgets.exit-screen")
 require("module.notification")
 require("module.autostart")

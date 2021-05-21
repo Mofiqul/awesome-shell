@@ -1,6 +1,9 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+local screen = screen
+local client = client
+local awesome = awesome
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
