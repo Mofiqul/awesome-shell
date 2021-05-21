@@ -1,3 +1,4 @@
+local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local awful = require("awful")
@@ -87,6 +88,29 @@ power_button:connect_signal("button::press", function (_, _, _, button)
 	end
 end)
 
+local logout_button = wibox.widget{
+	widget = btn_container,
+	{
+		widget = wibox.container.background,
+		bg = beautiful.bg_button,
+		shape = gears.shape.rounded_bar,
+		{
+			widget = wibox.container.margin,
+			margins = {top = dpi(9), left = dpi(16), bottom = dpi(9), right = dpi(16)},
+			{
+				widget = wibox.widget.textbox,
+				font = beautiful.font_large,
+				text = "Sign out"
+			}
+		}
+	}
+}
+
+logout_button:connect_signal("button::press", function (_, _, _, button)
+	if button == 1 then
+		awesome.quit()
+	end
+end)
 
 -- Session and user widget
 local session_widget = function ()
@@ -111,6 +135,7 @@ local session_widget = function ()
 					resize = true,
 					forced_width = dpi(42),
 					forced_height = dpi(42),
+					clip_shape = gears.shape.circle,
 					widget = wibox.widget.imagebox
 				},
 				widget_username,
@@ -119,8 +144,13 @@ local session_widget = function ()
 			},
 			nil,
 			{
-				power_button,
-				widget = wibox.container.place
+				logout_button,
+				{
+					power_button,
+					widget = wibox.container.place
+				},
+				spacing = dpi(6),
+				layout = wibox.layout.fixed.horizontal
 			},
 			layout = wibox.layout.align.horizontal
 		},
