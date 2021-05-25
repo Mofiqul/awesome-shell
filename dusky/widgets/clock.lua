@@ -110,14 +110,14 @@ local create_clock = function()
 
 	clock_widget:connect_signal("button::press", function (self, _, _, button)
 		if button == 1 then
-				local background_widget = self:get_children_by_id('background')[1]
-				if calendar.visible then
-					calendar.visible = not calendar.visible
-					background_widget.set_inactive()
-				else
-					calendar.visible = true
-					background_widget.set_active()
-				end
+			local background_widget = self:get_children_by_id('background')[1]
+			if calendar.visible then
+				calendar.visible = not calendar.visible
+				background_widget.set_inactive()
+			else
+				calendar.visible = true
+				background_widget.set_active()
+			end
 		end
 	end)
 
@@ -134,4 +134,5 @@ local create_clock = function()
 end
 
 return create_clock
+
 

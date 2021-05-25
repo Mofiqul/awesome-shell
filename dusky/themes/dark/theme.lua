@@ -14,12 +14,12 @@ theme.font_extra_small =  "Ubuntu 9"
 
 
 theme.bg_transparent = "#00000000"
-theme.bg_normal     = "#252526"
+theme.bg_normal     = "#282828"
 theme.bg_normal_alt = "#767676"
-theme.bg_focus      = "#0A7ACA"
+theme.bg_focus      = "#1B6ACB"
 theme.bg_urgent     = "#F44747"
-theme.bg_minimize   = "#303030"
-theme.bg_systray    = theme.bg_normal
+theme.bg_minimize   = "#303030EE"
+theme.bg_inner_widget = "#3C3C3C"
 
 theme.fg_normal     = "#ffffff"
 theme.fg_focus      = "#ffffff"
@@ -27,17 +27,16 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 -- button colors
-theme.bg_button = "#424242"
+theme.bg_button = "#4B4B4B"
 theme.bg_panel_button = theme.bg_transparent
 theme.bg_panel_button_active = theme.bg_button
 theme.border_button = theme.bg_button -- "#51514f"
-theme.border_panel_button = theme.bg_normal
+theme.border_panel_button = theme.bg_transparent
 theme.border_panel_button_active = theme.border_button
-theme.button_active = "#0A7ACA"
+theme.button_active = "#1B6ACB"
 theme.button_active_alt = "#2ea043"
-theme.bg_inner_widget = "#323232"
-theme.bg_tasklist_active = "#0A7ACA33"
-theme.bg_tasklist_inactive = "#303030"
+theme.bg_tasklist_active = "#1B6ACB33"
+theme.bg_tasklist_inactive = "#303030EE"
 theme.useless_gap   = dpi(1)
 theme.gap_single_client = true
 theme.maximized_hide_border = true
@@ -45,7 +44,7 @@ theme.border_width  = dpi(1)
 theme.button_panel_border_width = dpi(0)
 theme.button_panel_border_width_active = dpi(1)
 theme.border_normal = "#3d3d3d"
-theme.border_focus  = "#0A7ACA"
+theme.border_focus  = "#1B6ACB"
 theme.border_marked = "#F44747"
 theme.bg_yellow = "#f36351"
 -- Margins and paddings and border width
@@ -76,9 +75,7 @@ theme.widget_shape_alt = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 6)
 end
 
-theme.panel_button_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 0)
-end
+theme.panel_button_shape = nil
 
 theme.panel_button_shape_active = gears.shape.rounded_bar
 -- Icons
@@ -153,8 +150,11 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
-theme.taglist_bg_focus = theme.bg_focus
-theme.taglist_spacing     = 2
+theme.taglist_bg_focus = theme.bg_focus .. "99"
+theme.taglist_fg_focus = theme.fg_focus
+theme.taglist_fg_urgent = theme.bg_focus
+theme.taglist_bg_urgent = theme.bg_urgent
+theme.taglist_spacing     = dpi(2)
 
 
 -- Tasklist
@@ -162,16 +162,16 @@ theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = theme.button_panel_border_width
 theme.tasklist_shape_border_color = theme.border_panel_button
 theme.tasklist_bg_focus = theme.bg_focus
-theme.tasklist_bg_normal = theme.border_button
+theme.tasklist_bg_normal = theme.bg_button
+theme.tasklist_bg_minimize = theme.bg_transparent
 
 
 -- Snap area
-theme.snap_bg = theme.bg_button
+theme.snap_bg = theme.bg_normal .. "55"
 theme.snap_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 8)
+    gears.shape.rounded_rect(cr, height, width, 0)
 end
 theme.snap_border_width = dpi(3)
-theme.snapper_gap = dpi(3)
 
 
 -- Notification
@@ -190,7 +190,7 @@ theme.notification_border_width = 0;
 
 
 -- systray
-theme.bg_systray = theme.bg_normal
+theme.bg_systray = nil
 
 -- Menu
 theme.menu_submenu_icon = themes_path.."/submenu.png"
@@ -198,8 +198,9 @@ theme.menu_height = dpi(26)
 theme.menu_width  = dpi(200)
 
 -- Wibar
-theme.wibar_height = dpi(26)
+theme.wibar_height = dpi(28)
 theme.wibar_position = "bottom"
+theme.wibar_icon_size = dpi(16)
 
 -- Titlebar
 --- Define the image to load

@@ -2,14 +2,15 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 
+
+local systray = wibox.widget.systray
+systray.base_size = dpi(16)
+
 local widget_systray = wibox.widget{
 	{
 		{
-			wibox.widget.systray,
-			left = dpi(2),
-			right = dpi(2),
-			top = dpi(2),
-			bottom = dpi(2),
+			systray,
+			margins = dpi(4),
 			widget = wibox.container.margin
 		},
 		bg = beautiful.bg_panel_button,

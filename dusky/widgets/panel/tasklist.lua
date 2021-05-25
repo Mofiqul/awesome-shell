@@ -74,7 +74,7 @@ local tasklist = function (s)
 				widget = wibox.container.background,
 				id = "background"
 			},
-			widget = wibox.container.margin,
+			widget = wibox.container.place,
 			create_callback = function (self, c, index, objects)
 				self:get_children_by_id('background')[1].bg = beautiful.bg_tasklist_active
 			end,

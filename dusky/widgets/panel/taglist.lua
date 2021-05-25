@@ -4,6 +4,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local client = client
+
 local taglist = function (s)
 
 	local taglist_buttons = gears.table.join(
@@ -37,7 +38,6 @@ local taglist = function (s)
 			selected = selected,
 		})
 	end
-    --awful.tag({ "WEB", "DEV", "TERM", "MISC", "EMG" }, s, awful.layout.layouts[1])
 
     local tags = awful.widget.taglist {
         screen  = s,
@@ -48,23 +48,15 @@ local taglist = function (s)
 
 	local taglist_wrapped = wibox.widget {
 		{
-
-			{
-				tags,
-				left = dpi(4),
-				right = dpi(4),
-				top = dpi(0),
-				bottom = dpi(0),
-				widget = wibox.container.margin
-			},
-			bg = beautiful.bg_panel_button,
-			shape = beautiful.panel_button_shape,
-			border_width = beautiful.button_panel_border_width,
-			border_color = beautiful.border_panel_button,
-			widget = wibox.container.background
+			tags,
+			margins = dpi(4),
+			widget = wibox.container.margin
 		},
-		margins = dpi(2),
-		widget = wibox.container.margin
+		bg = beautiful.bg_panel_button,
+		shape = beautiful.panel_button_shape,
+		border_width = beautiful.button_panel_border_width,
+		border_color = beautiful.border_panel_button,
+		widget = wibox.container.background
     }
 
 	return taglist_wrapped

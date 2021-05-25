@@ -1,6 +1,6 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
-
+local dpi = beautiful.xresources.apply_dpi
 local volume = {
     delta = 5
 }
@@ -24,6 +24,8 @@ local function worker()
             id = "icon",
             image = beautiful.volume_normal_icon,
             resize = true,
+			forced_height = beautiful.wibar_icon_size,
+			forced_width = beautiful.wibar_icon_size,
             widget = wibox.widget.imagebox,
         },
         layout = wibox.container.margin,

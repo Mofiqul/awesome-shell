@@ -89,11 +89,12 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.align.horizontal,
 			{ -- Left widgets
 				layout = wibox.layout.fixed.horizontal,
+				require("widgets.separator"),
 				require("widgets.panel.menu"),
 				require("widgets.panel.taglist")(s),
 				s.mypromptbox,
 			},
-			require("widgets.panel.tasklist")(s), -- Middle widget
+			require("widgets.panel.icon-only-tasklist")(s), -- Middle widget
 			{ -- Right widgets
 				layout = wibox.layout.fixed.horizontal,
 				require("widgets.panel.systray-no-toggle"),
@@ -103,7 +104,7 @@ awful.screen.connect_for_each_screen(function(s)
 				require("widgets.control-center"),
 			},
 		},
-		bg = beautiful.bg_normal,
+		bg = beautiful.bg_normal .. "EE",
 		-- shape = function (cr, width, height)
 		-- 	gears.shape.partially_rounded_rect( cr, width, height, true, true, false, false, 50)
 		-- end,

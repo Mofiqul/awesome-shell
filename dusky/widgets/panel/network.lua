@@ -3,12 +3,14 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
-
+local dpi = beautiful.xresources.apply_dpi
 local network_indicator = function()
 
 	local widget = wibox.widget {
 		image = beautiful.wireless_connected_icon,
 		resize = true,
+		forced_height = beautiful.wibar_icon_size,
+		forced_width = beautiful.wibar_icon_size,
 		widget = wibox.widget.imagebox
 	}
 

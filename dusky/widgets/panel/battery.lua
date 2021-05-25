@@ -31,6 +31,8 @@ local function worker(user_args)
     local icon_widget = wibox.widget {
         widget = wibox.widget.imagebox,
         resize = true,
+		forced_height = beautiful.wibar_icon_size,
+		forced_width = beautiful.wibar_icon_size
     }
 
     local level_widget = wibox.widget {

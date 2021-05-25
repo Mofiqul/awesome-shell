@@ -7,28 +7,24 @@ local default_apps = require("configurations.default-apps")
 local clickable_container = require("widgets.clickable-container")
 
 local widget_menu = wibox.widget{
-	{	{
+	{
+		{
 			{
-				{
-					image = beautiful.awesome_menu_icon,
-					resize = true,
-					widget = wibox.widget.imagebox
-				},
-				left = dpi(6),
-				right = dpi(2),
-				top = dpi(2),
-				bottom = dpi(2),
-				widget = wibox.container.margin
+				image = beautiful.awesome_menu_icon,
+				resize = true,
+				forced_height = beautiful.wibar_icon_size,
+				forced_width = beautiful.wibar_icon_size,
+				widget = wibox.widget.imagebox
 			},
-			id = "background",
-			bg = beautiful.bg_panel_button,
-			shape = beautiful.panel_button_shape,
-			border_width = beautiful.button_panel_border_width,
-			border_color = beautiful.border_panel_button,
-			widget = wibox.container.background
+			margins = dpi(4),
+			widget = wibox.container.margin
 		},
-		margins = dpi(2),
-		widget = wibox.container.margin
+		id = "background",
+		bg = beautiful.bg_panel_button,
+		shape = beautiful.panel_button_shape,
+		border_width = beautiful.button_panel_border_width,
+		border_color = beautiful.border_panel_button,
+		widget = wibox.container.background
 	},
 	widget = clickable_container
 }

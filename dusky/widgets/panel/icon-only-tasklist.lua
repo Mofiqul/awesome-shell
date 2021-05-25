@@ -12,6 +12,7 @@ local tasklist = function (s)
 		   	if c == client.focus then
 			   	c.minimized = true
 		   	else
+				--c.first_tag:emit_signal("request::select")
 			   	c:emit_signal(
 				   	"request::activate",
 				   	"tasklist",
@@ -20,7 +21,8 @@ local tasklist = function (s)
 		   	end
 		end),
 		awful.button({ }, 3, function()
-			awful.menu.client_list({ theme = { width = 250 } })
+			--awful.menu.client_list({ theme = { width = 250 } })
+			return
 		end),
 		awful.button({ }, 4, function ()
 			awful.client.focus.byidx(1)
@@ -33,33 +35,53 @@ local tasklist = function (s)
 	local widget_tasklist = awful.widget.tasklist {
 		screen   = s,
 		filter   = awful.widget.tasklist.filter.currenttags,
+		-- source = function()
+		-- 	-- Get all clients
+		-- 	local cls = client.get()
+
+		-- 	-- Filter by an existing filter function and allowing only one client per class
+		-- 	local result = {}
+		-- 	local class_seen = {}
+		-- 	for _, c in pairs(cls) do
+		-- 		if awful.widget.tasklist.filter.alltags(c, s) then
+		-- 			if not class_seen[c.class] then
+		-- 				class_seen[c.class] = true
+		-- 				table.insert(result, c)
+		-- 			end
+		-- 		end
+		-- 	end
+		-- 	return result
+		-- end,
 		buttons  = tasklist_buttons,
 		layout   = {
 			layout  = wibox.layout.fixed.horizontal,
-			spacing = dpi(4)
+			spacing = dpi(2)
 		},
 		-- Notice that there is *NO* wibox.wibox prefix, it is a template,
 		-- not a widget instance.
 		widget_template = {
 			{
 				{
+					nil,
+					{
+						awful.widget.clienticon,
+						left = dpi(5),
+						right = dpi(2.5),
+						widget = wibox.container.margin
+					},
 					{
 						id = "background_role",
 						forced_height = dpi(2),
 						widget = wibox.container.background
 					},
-					{
-						awful.widget.clienticon,
-						left = dpi(4),
-						right = dpi(4),
-						widget = wibox.container.margin
-					},
-					widget = wibox.layout.fixed.vertical,
+					nil,
+					expand = "inside",
+					widget = wibox.layout.align.vertical,
 				},
 				widget = wibox.container.background,
 				id = "background"
 			},
-			widget = wibox.container.margin,
+			widget = wibox.container.place,
 			create_callback = function (self, c, index, objects)
 				self:get_children_by_id('background')[1].bg = beautiful.bg_tasklist_active
 			end,
@@ -67,10 +89,8 @@ local tasklist = function (s)
 				local widget_background = self:get_children_by_id("background")[1]
 				if c.active then
 					widget_background.bg = beautiful.bg_tasklist_active
-				elseif c.minimized then
-					widget_background.bg = beautiful.bg_minimize
 				else
-					widget_background.bg = beautiful.bg_tasklist_inactive
+					widget_background.bg = beautiful.bg_transparent
 				end
 			end
 		},
@@ -80,4 +100,13 @@ local tasklist = function (s)
 
 end
 
-return tasklist
+
+function tasklist_container(s)
+	return wibox.widget{
+		widget = wibox.container.place,
+		halign = "left",
+		tasklist(s)
+	}
+end
+
+return tasklist_container

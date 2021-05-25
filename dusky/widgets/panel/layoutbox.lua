@@ -9,11 +9,15 @@ local layoutbox = function (s)
 	local layoutbox_wrapped = wibox.widget {
 		{
 			{
-				awful.widget.layoutbox(s),
-				top = dpi(2),
-				bottom = dpi(2),
-				left = dpi(2),
-				right = dpi(2),
+				{
+					widget = awful.widget.layoutbox(s),
+					forced_height = beautiful.wibar_icon_size,
+					forced_width = beautiful.wibar_icon_size
+				},
+				top = dpi(4),
+				bottom = dpi(4),
+				left = dpi(4),
+				right = dpi(4),
 				widget = wibox.container.margin
 			},
 			shape = beautiful.panel_button_shape,
@@ -22,8 +26,7 @@ local layoutbox = function (s)
 			border_color = beautiful.border_panel_button,
 			widget = wibox.container.background
 		},
-		margins = dpi(2),
-		widget = wibox.container.margin
+		widget = wibox.container.place
 	}
 
 	layoutbox_wrapped:buttons(
