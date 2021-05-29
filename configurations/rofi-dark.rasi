@@ -1,0 +1,117 @@
+configuration {
+	font:							"Ubuntu Nerd font 12";
+    show-icons:                     true;
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+    fullscreen:                     false;
+	hide-scrollbar: 				true;
+	sidebar-mode: 					false;
+}
+
+* {
+    background:                     #282828DD;
+    background-alt:                 #00000000;
+    background-bar:                 #3B3B3BDD;
+    foreground:                     #ffffff;
+}
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+	border:							0px;
+	border-color:					@border;
+    border-radius:                  0px;
+	width:							100%;
+	height:                         80%;
+	anchor:                         south;
+    location:                       south;
+	y-offset:                       -30px;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						0.30% 0.5% 0% 0%;
+	background-color: 				@background-alt;
+	text-color: 					@foreground;
+}
+
+entry {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    placeholder-color:              @foreground;
+    expand:                         true;
+    horizontal-align:               0;
+	font:                           "Ubuntu  light 10";
+    placeholder:                    "Type to search";
+    padding:                        0.30% 0% 0% 0.25%;
+    blink:                          true;
+}
+
+inputbar {
+	children: 						[ prompt, entry ];
+    background-color:               @background-bar;
+    text-color:                     @foreground;
+    expand:                         false;
+	border:							0px;
+    border-radius:                  50%;
+	border-color:					@accent;
+    margin:                         0% 15% 0% 15%;
+    padding:                        1.0% 10% 1.0% 10%;
+}
+
+scrollbar{
+	background-color:               @background-alt;
+	handle-color:                   @background-bar;
+}
+
+listview {
+    background-color:               @background-alt;
+    columns:                        5;
+    lines:                          3;
+    spacing:                        2%;
+    cycle:                          false;
+    dynamic:                        true;
+    layout:                         vertical;
+	scrollbar:                      false;
+}
+
+mainbox {
+    background-color:               @background-alt;
+	border:							0% 0% 0% 0%;
+    border-radius:                  0% 0% 0% 0%;
+	border-color:					@accent;
+    children:                       [ inputbar, listview ];
+    spacing:                       	5%;
+    padding:                        5% 20% 10% 20%;
+}
+
+element {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  0%;
+    padding:                        2% 0% 2% 0%;
+}
+
+element-icon {
+    size:                           64px;
+    border:                         0px;
+}
+
+element-text {
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
+	font:                           "Ubuntu 9";
+}
+
+element selected {
+    background-color:               @background-bar;
+    text-color:                     @foreground;
+	border:							0px;
+    border-radius:                  8px;
+    border-color:                  	@accent;
+}
