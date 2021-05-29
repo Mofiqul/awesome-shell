@@ -2,7 +2,6 @@ local naughty = require("naughty")
 local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
 
-
 local initial_action = function(button)
 	local background = button:get_children_by_id("background")[1]
 	local label = button:get_children_by_id("label")[1]

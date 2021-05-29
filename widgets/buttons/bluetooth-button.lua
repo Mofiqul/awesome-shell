@@ -4,7 +4,7 @@ local default_apps = require("configurations.default-apps")
 local settings = require("configurations.settings")
 local create_button = require("widgets.buttons.create-button")
 
-local bluetooth_button = create_button.circle_big(beautiful.icon_bluetooth) 
+local bluetooth_button = create_button.circle_big(beautiful.icon_bluetooth)
 
 local background = bluetooth_button:get_children_by_id("background")[1]
 local label = bluetooth_button:get_children_by_id("label")[1]
@@ -31,7 +31,6 @@ if settings.is_bluetooth_presence then
 								break
 							fi
 						done
-
 					]=],
 					function (stdout)
 						local output = stdout:gsub("%s+", " ")

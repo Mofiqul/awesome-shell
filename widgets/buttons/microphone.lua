@@ -2,15 +2,13 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local create_button = require("widgets.buttons.create-button")
 
-local initial_action = function (button) 
+local initial_action = function (button)
 	local background = button:get_children_by_id("background")[1]
 	local label = button:get_children_by_id("label")[1]
 
-	awful.widget.watch(
-		[[sh -c "amixer | grep 'Front Left: Capture' | awk -F' ' '{print $6}' | sed -e 's/\[//' -e 's/\]//'"]], 
-		10, 
-		function(_, stdout)
-			--naughty.notification({text = stdout})
+	awful.spawn.easy_async_with_shell(
+		[[sh -c amixer | grep 'Front Left: Capture' | awk -F' ' '{print $6}' | sed -e 's/\[//' -e 's/\]//']],
+		function(stdout)
 			if stdout:match('on') then
 				background:set_bg(beautiful.button_active)
 				label:set_text("In Use")

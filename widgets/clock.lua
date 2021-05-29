@@ -1,12 +1,11 @@
 local wibox = require('wibox')
 local awful = require('awful')
-local gears = require('gears')
 local beautiful = require('beautiful')
 local dpi = beautiful.xresources.apply_dpi
 local clickable_container = require('widgets.clickable-container')
 local btn_bg_container = require("widgets.button-active-container")
 
-local create_clock = function()
+local create_clock = function(s)
 
 	local clock_format = nil
 	clock_format = '<span font="Ubuntu 12">%I:%M %p</span>'
@@ -39,7 +38,6 @@ local create_clock = function()
 	}
 
 
-	local s =  awful.screen.focused()
 	local popup_height = s.geometry.height - (beautiful.wibar_height + dpi(10))
 	local time_format = "<span font='Ubuntu light 36'> %I:%M </span> "
 	local date_formate = "<span font='Ubuntu bold 12'> %A, %B, %d </span>"
@@ -59,6 +57,7 @@ local create_clock = function()
 		ontop = true,
 		visible = false,
 		bg = "#00000000",
+		screen = s,
 		placement = function (w)
 			awful.placement.bottom_right(w, {
 				margins = {left = 0, top = 5, bottom = beautiful.wibar_height + dpi(5), right = dpi(5)}

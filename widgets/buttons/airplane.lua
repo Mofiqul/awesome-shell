@@ -6,7 +6,7 @@ local initial_action = function (button)
 	local background = button:get_children_by_id("background")[1]
 	local label = button:get_children_by_id("label")[1]
 
-	awful.widget.watch("rfkill list all", 10, function(_, stdout)
+	awful.spawn.easy_async_with_shell("rfkill list all",function(stdout)
 		if stdout:match('Soft blocked: yes') then
 			background:set_bg(beautiful.button_active)
 			label:set_text("On")

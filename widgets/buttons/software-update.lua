@@ -21,7 +21,7 @@ end)
 
 awful.widget.watch(
 	[[sh -c "pacman -Qu | wc -l"]],
-	10,
+	300,
 	function (_, stdout)
 		local background = software_update:get_children_by_id("background")[1]
 		local label = software_update:get_children_by_id("label")[1]

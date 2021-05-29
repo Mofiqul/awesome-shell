@@ -175,7 +175,7 @@ local url =
             (show_hourly_forecast == false and ',hourly' or '') ..
             (show_daily_forecast == false and ',daily' or ''))
 
-awful.widget.watch(string.format(GET_FORECAST_CMD, url), 300, function (_,stdout, stderr)
+awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function (_,stdout, stderr)
 	if stderr == '' then
 		local result = json.decode(stdout)
 		-- Current weather setup

@@ -45,21 +45,12 @@ local taglist = function (s)
         buttons = taglist_buttons,
 	}
 
+	return wibox.widget{
+		tags,
+		margins = {top = dpi(4), bottom = dpi(4)},
+		widget = wibox.container.margin
+	}
 
-	local taglist_wrapped = wibox.widget {
-		{
-			tags,
-			margins = dpi(4),
-			widget = wibox.container.margin
-		},
-		bg = beautiful.bg_panel_button,
-		shape = beautiful.panel_button_shape,
-		border_width = beautiful.button_panel_border_width,
-		border_color = beautiful.border_panel_button,
-		widget = wibox.container.background
-    }
-
-	return taglist_wrapped
 end
 
 return taglist
