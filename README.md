@@ -23,7 +23,7 @@ This is a collection of [awesome wm](https://awesomewm.org/) configuration files
 Clone the this repository 
 
 ```
-https://github.com/Mofiqul/awesome-shell.git  ~/.config/awesome
+git clone https://github.com/Mofiqul/awesome-shell.git  ~/.config/awesome
 ```
 
 ### ⚙️ Settings
