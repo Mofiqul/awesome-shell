@@ -15,6 +15,7 @@ theme.font_large = "Ubuntu 12"
 theme.font_large_bold = "Ubuntu bold 12"
 theme.font_small =  "Ubuntu 9"
 theme.font_extra_small =  "Ubuntu 9"
+theme.taglist_font = "Ubuntu Nerd Font 12"
 
 -- Colors Definations
 local colors = {}
@@ -23,7 +24,7 @@ colors.transparent = "#00000000"
 colors.red = "#F44747"
 colors.blue = "#1B6ACB"
 colors.green = "#2EA043"
-colors.yello = "#F36351"
+colors.yellow = "#F36351"
 
 if theme.mode == "dark" then
     colors.bg = "#282828DD"
@@ -47,7 +48,7 @@ theme.bg_normal     = colors.bg
 theme.bg_normal_alt = colors.bg_alt
 theme.bg_focus      = colors.blue
 theme.bg_urgent     = colors.red
-theme.bg_minimize   = "#303030EE"
+theme.bg_minimize   = colors.transparent
 theme.bg_inner_widget = colors.dark_gray
 
 theme.fg_normal     = colors.fg
@@ -71,12 +72,7 @@ theme.button_active_alt = colors.green
 theme.border_normal = colors.light_gray
 theme.border_focus  = colors.blue
 theme.border_marked = colors.red
-theme.bg_yellow = colors.yello
--- client border colors
-theme.border_color_normal = theme.bg_transparent
-theme.border_color_active = theme.border_normal
---theme.opacity_normal = 0.85
---theme.opacity_active = 0.85
+theme.bg_yellow = colors.yellow
 
 -- Tasklist colors
 theme.bg_tasklist_active = colors.blue .. "33"
@@ -186,29 +182,39 @@ theme.icon_recorder = theme_path .. "icons/48x48/camera-on.svg"
 
 -- Taglist
 --- Generate taglist squares:
-local taglist_square_size = dpi(5)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_bg_focus = theme.bg_focus .. "99"
-theme.taglist_fg_focus = theme.fg_focus
-theme.taglist_fg_urgent = theme.bg_focus
-theme.taglist_bg_urgent = theme.bg_urgent
-theme.taglist_spacing     = dpi(2)
+-- local taglist_square_size = dpi(5)
+-- theme.taglist_font = theme.taglist_font
+-- theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+--     taglist_square_size, colors.blue
+-- )
+-- theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+--     taglist_square_size, colors.yellow
+-- )
+theme.taglist_bg_focus = colors.transparent
+theme.taglist_fg_focus = colors.blue
+theme.taglist_fg_occupied = colors.yellow
+theme.taglist_fg_urgent = colors.red
+theme.taglist_bg_urgent = colors.transparent
+-- theme.taglist_shape_border_width = dpi(0)
+-- theme.taglist_shape_border_width_focus = dpi(1)
+-- theme.taglist_shape_border_color_focus = colors.blue
+-- theme.taglist_shape_border_color = colors.transparent
+theme.taglist_spacing = dpi(2)
 
 -- Tasklist
 theme.tasklist_shape  = theme.panel_button_shape
 theme.tasklist_shape_border_width = theme.button_panel_border_width
 theme.tasklist_shape_border_color = theme.border_panel_button
-theme.tasklist_bg_focus = theme.bg_focus
-theme.tasklist_bg_normal = theme.bg_button
-theme.tasklist_bg_minimize = theme.bg_transparent
+theme.tasklist_bg_focus = colors.blue
+if theme.mode  == "dark" then
+    theme.tasklist_bg_normal = colors.dark_gray
+elseif theme.mode == "glassy" then
+    theme.tasklist_bg_normal = colors.gray
+end
+theme.tasklist_bg_minimize = colors.transparent
 
 -- Snap area
-theme.snap_bg = theme.bg_normal .. "55"
+theme.snap_bg = colors.bg .. "55"
 theme.snap_shape = function (cr, height, width)
     gears.shape.rounded_rect(cr, height, width, 0)
 end
@@ -216,17 +222,13 @@ theme.snap_border_width = dpi(3)
 
 -- Notification
 theme.notification_font = theme.font
-theme.notification_bg = theme.bg_normal
-theme.notification_fg = theme.fg_normal
-theme.notification_shape = function (cr, height, width)
-    gears.shape.rounded_rect(cr, height, width, 6)
-end
+theme.notification_bg = colors.bg
+theme.notification_fg = colors.fg
 theme.notification_width = dpi(265)
 theme.notification_max_width = dpi(265)
 theme.notification_icon_size = 64
 theme.notification_spacing = dpi(8)
 theme.notification_border_width = 0;
---theme.notification_border_color  = theme.border_normal
 
 -- systray
 theme.bg_systray = nil
@@ -271,13 +273,13 @@ theme.layout_dwindle = theme_path.."layouts/dwindle.svg"
 
 -- Hotkey popup
 theme.hotkeys_border_width = dpi(1)
-theme.hotkeys_border_color = theme.bg_normal
-theme.hotkeys_modifiers_fg = theme.button_active_alt
+theme.hotkeys_border_color = colors.bg
+theme.hotkeys_modifiers_fg = colors.bg_alt
 theme.hotkeys_shape = gears.shape.rounded_rect
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
+    theme.menu_height, colors.blue, colors.fg
 )
 
 -- Define the icon theme for application icons. If not set then the icons

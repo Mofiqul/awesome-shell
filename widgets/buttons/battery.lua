@@ -36,9 +36,14 @@ local update_status = function ()
 		function (stdout)
 			local state = str_split(stdout:gsub(",", ""), " ")
 			local status = state[3]:gsub("%s+", "")
-			local charge = state[4]:sub(1,2)
-
-			label:set_text(charge .. "%")
+			local charge = ''
+			-- This is required because sometime bad battery show "Not Charging"
+			if status == "Not" then
+				charge = state[5]:gsub("%%", "")
+			else
+				charge = state[4]:gsub("%%", "")
+			end
+			label:set_text(charge:gsub("%s+", "") .. "%")
 
 			if status == 'Charging' then
 				icon.image = beautiful.battery_icon_charging
@@ -52,8 +57,9 @@ local update_status = function ()
 
 			charge = tonumber(charge)
 			if (charge >= 0 and charge < 15) then
-				if status ~= "Charging" and os.difftime(os.time(), last_battery_check) > 300 then
-					-- if 5 minutes have elapsed since the last warning
+				-- Checking only for "Discharging" because sometimes staus can be "Unknown" and "Not changing"
+				-- and dont want to give notification for those status
+				if status == "Discharging" and os.difftime(os.time(), last_battery_check) > 300 then
 					last_battery_check = os.time()
 					local msg = "Battery is criticaly low, save your work or plug adapter"
 					local title = "<b>Battery criticaly low</b>"
