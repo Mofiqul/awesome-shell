@@ -12,7 +12,7 @@ configuration {
 * {
     background:                     #11111199;
     background-alt:                 #00000000;
-    background-bar:                 #282828AA;
+    background-bar:                 #000000AA;
     foreground:                     #ffffff;
 }
 
