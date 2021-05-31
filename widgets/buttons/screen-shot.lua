@@ -128,8 +128,6 @@ local screeh_shot_tool = function (s)
 			{
 				widget = wibox.container.background,
 				bg = beautiful.bg_button_alt,
-				border_width = beautiful.border_width,
-				border_color = beautiful.border_button,
 				shape = beautiful.btn_rounded,
 				{
 					widget = wibox.container.margin,

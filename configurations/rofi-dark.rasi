@@ -10,9 +10,9 @@ configuration {
 }
 
 * {
-    background:                     #282828DD;
+    background:                     #212126EE;
     background-alt:                 #00000000;
-    background-bar:                 #3B3B3BDD;
+    background-bar:                 #3B3B42EE;
     foreground:                     #ffffff;
 }
 
