@@ -86,7 +86,7 @@ local stdout = handle:read("*a")
 handle:close()
 --- If the system has battery then add battery widget to control center
 if stdout:match("Battery detected") then
-	
+
 	gears.timer {
 		timeout = 5,
 		autostart = true,
@@ -97,7 +97,7 @@ if stdout:match("Battery detected") then
 	}
 else
 	label:set_text("AC")
-	icon.image(beautiful.icon_ac)
+	icon.image = beautiful.icon_ac
 	icon:emit_signal("widget::redraw_needed")
 	battery_panel_indicator:set_image(beautiful.icon_ac)
 end
