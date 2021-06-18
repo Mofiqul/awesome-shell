@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local menubar = require("menubar")
 local dpi = beautiful.xresources.apply_dpi
 local awesome = awesome
 local client = client
@@ -14,6 +15,27 @@ local function setTitlebar(client, s)
         awful.titlebar.hide(client)
     end
 end
+
+local set_client_icon = function (c)
+	local icon = menubar.utils.lookup_icon(c.instance)
+    local lower_icon = menubar.utils.lookup_icon(c.instance:lower())
+    --Check if the icon exists
+    if icon ~= nil then
+		local new_icon = gears.surface(icon)
+        c.icon = new_icon._native
+
+    --Check if the icon exists in the lowercase variety
+    elseif lower_icon ~= nil then
+        local new_icon = gears.surface(lower_icon)
+        c.icon = new_icon._native
+
+    --Check if the client already has an icon. If not, give it a default.
+    elseif c.icon == nil then
+        local new_icon = gears.surface(menubar.utils.lookup_icon("application-default-icon"))
+		c.icon = new_icon._native
+	end
+end
+
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -32,6 +54,8 @@ client.connect_signal("manage", function (c)
 		awful.placement.centered(c)
 	end
 
+
+	set_client_icon(c)
 	setTitlebar(c, c.first_tag.layout == awful.layout.suit.floating)
 end)
 

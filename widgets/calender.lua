@@ -14,14 +14,14 @@ styles.month = {
 }
 
 styles.normal = {
-	padding = dpi(7),
+	padding = dpi(6),
 }
 
 styles.focus = {
 	fg_color = beautiful.fg_normal,
     markup   = function(t) return '<b>' .. t .. '</b>' end,
 	bg_color = beautiful.bg_focus,
-	padding = dpi(7),
+	padding = dpi(6),
 	shape = gears.shape.circle
 }
 

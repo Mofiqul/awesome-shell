@@ -25,14 +25,15 @@ colors.red = "#F44747"
 colors.blue = "#1B6ACB"
 colors.green = "#2EA043"
 colors.yellow = "#F36351"
+colors.orange = "#fc9905"
 
 if theme.mode == "dark" then
-    colors.bg = "#282828DD"
-    colors.bg_alt = "#767676"
+    colors.bg = "#212126EE"
+    colors.bg_alt = "#76767E"
     colors.fg = "#ffffff"
-    colors.gray = "#4B4B4B"
-    colors.dark_gray = "#3B3B3B"
-    colors.light_gray = "#515151"
+    colors.gray = "#4B4B51"
+    colors.dark_gray = "#3B3B42"
+    colors.light_gray = "#515162"
 elseif theme.mode == "glassy" then
     colors.bg = "#11111199"
     colors.bg_alt = "#767676AA"
@@ -192,7 +193,7 @@ theme.icon_recorder = theme_path .. "icons/48x48/camera-on.svg"
 -- )
 theme.taglist_bg_focus = colors.transparent
 theme.taglist_fg_focus = colors.blue
-theme.taglist_fg_occupied = colors.yellow
+theme.taglist_fg_occupied = colors.orange
 theme.taglist_fg_urgent = colors.red
 theme.taglist_bg_urgent = colors.transparent
 -- theme.taglist_shape_border_width = dpi(0)
@@ -285,7 +286,7 @@ theme.awesome_icon = theme_assets.awesome_icon(
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 
-theme.icon_theme = ""
+theme.icon_theme = "Material-Originals-Icons-Blue-dark"
 
 return theme
 

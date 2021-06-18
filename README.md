@@ -23,16 +23,11 @@ This is a collection of [awesome wm](https://awesomewm.org/) configuration files
 Clone the this repository 
 
 ```
-https://github.com/Mofiqul/awesome-shell.git  ~/.config/awesome
+git clone https://github.com/Mofiqul/awesome-shell.git  ~/.config/awesome
 ```
 
 ### ⚙️ Settings
 Change your settings in `configurations/settings.lua`
-
-### 🚀 Startup programs
-Add your startup program in  `module/autostart.lua`
-
-> Note: If you are using dusky theme then add your cordinate and open weather map api key in `configurations/settings.lua`
 
 ```lua
 settings.openweathermap_api_key = "<API KEY>"
@@ -41,6 +36,10 @@ settings.openweathermap_coordinates = {
 	"<longitude>" -- lng
 }
 ```
+
+
+### 🚀 Startup programs
+Add your startup program in  `module/autostart.lua`
 
 ## 🦄 Changing theme 
 
@@ -62,32 +61,32 @@ theme.mode = "dark"
 
 <h3 align="center">Calendar and weather widget</h3>
 
-![control center](./screen-shots/glassy2.png)
+![calender](./screen-shots/glassy2.png)
 
 
 <h3 align="center">App Launcher</h3>
 
-![control center](./screen-shots/glassy3.png)
+![app launcher](./screen-shots/glassy3.png)
 
 <h3 align="center">Exit Screen</h3>
 
-![control center](./screen-shots/glassy4.png)
+![exit screen](./screen-shots/glassy4.png)
 
 <h3 align="center">Lock Screen</h3>
 
-![control center](./screen-shots/glassy5.png)
+![lock screen](./screen-shots/glassy5.png)
 
 <h3 align="center">Kde plasma style task manager</h3>
 
-![control center](./screen-shots/tasklist.png)
+![tasklist](./screen-shots/tasklist.png)
 
 <h3 align="center">Icon only task manager</h3>
 
-![control center](./screen-shots/icon-only-tasklist.png)
+![icon only tasklist](./screen-shots/icon-only-tasklist.png)
 
-<h3 align="center">Screen shot and Recording tool</h3>
+<h3 align="center">Screen shot and Recording tool(very basic)</h3>
 
-![control center](./screen-shots/dark4.png)
+![screen shot tool](./screen-shots/dark4.png)
 
 ### Other features
 - Support for multi head
